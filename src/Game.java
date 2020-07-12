@@ -11,6 +11,11 @@ import java.util.LinkedList;
 public class Game {
 
     public static void main(String[] args) {
+    	
+    	UserInterface newUserInterface = new UserInterface();
+    	newUserInterface.CreateUserInterface();
+    	
+    	
         LinkedList<Question> eventQuestions = new LinkedList<Question>();
         LinkedList<Question> peopleQuestions = new LinkedList<Question>();
         LinkedList<Question> placesQuestions = new LinkedList<Question>();
