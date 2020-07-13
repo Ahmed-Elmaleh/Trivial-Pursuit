@@ -12,20 +12,29 @@ public class Game {
 
     public static void main(String[] args) {
     	
-    	UserInterface newUserInterface = new UserInterface();
-    	newUserInterface.CreateUserInterface();
+   
+
+    	Board newBoard = new Board();
+    	newBoard.CreateBoard();
+    	
+    	
+    	
+    	//Player[] players = new Player();
+    	
     	
     	
         LinkedList<Question> eventQuestions = new LinkedList<Question>();
         LinkedList<Question> peopleQuestions = new LinkedList<Question>();
         LinkedList<Question> placesQuestions = new LinkedList<Question>();
         LinkedList<Question> independenceDayHolidayQuestions = new LinkedList<Question>();
+        
+        
 
 
         System.out.println("Hello World!");
     }
 
-    public void getQuestions(LinkedList<Question> list, String filePath)
+    private void getQuestions(LinkedList<Question> list, String filePath)
     {
         String line="";
         try
