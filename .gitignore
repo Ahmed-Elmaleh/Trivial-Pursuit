@@ -2,4 +2,8 @@
 /out/
 .idea/*
 *.iml
+*.log
+*.classpath
+*.project
+*.DS_Store
 /bin/
