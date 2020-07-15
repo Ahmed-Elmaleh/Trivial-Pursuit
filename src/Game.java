@@ -22,10 +22,18 @@ public class Game {
         LinkedList<Question> independenceDayHolidayQuestions = new LinkedList<Question>();
 
 
-        System.out.println("Hello World!");
+
+        System.out.println("Simulating messages between GAME and QUESTION classes.\nGetting Questions...");
+        getQuestions(placesQuestions, "src/Question_Set/places.csv");
+        placesQuestions.get(2).printQuestion();
+        System.out.println("Simulating player answer for verification");
+        System.out.println(placesQuestions.get(2).isCorrect("Philadelphia"));
+        System.out.println(placesQuestions.get(2).isCorrect("Massachusetts"));
+        System.out.println(placesQuestions.get(2).isCorrect("Virginia"));
+        System.out.println(placesQuestions.get(2).isCorrect("Washington DC"));
     }
 
-    public void getQuestions(LinkedList<Question> list, String filePath)
+    public static void getQuestions(LinkedList<Question> list, String filePath)
     {
         String line="";
         try
