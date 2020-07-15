@@ -1,5 +1,6 @@
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.awt.EventQueue;
 import java.io.BufferedReader;
 import java.io.IOException;
 
@@ -10,6 +11,18 @@ public class Game {
 
     public static void main(String[] args) {
     	
+    	/**
+         * Launch the application.
+         */
+    	EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					createAndShowGUI();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
     	
         LinkedList<Question> eventQuestions = new LinkedList<Question>();
         LinkedList<Question> peopleQuestions = new LinkedList<Question>();
@@ -52,5 +65,15 @@ public class Game {
             e.printStackTrace();
         }
     }
+    
+    
+    public static void createAndShowGUI() throws Exception {
+ 	    View view = new View();
+        Controller c = new Controller(view);
+        c.runController();
+ 	}
+ 	
+  
 }
+
 
