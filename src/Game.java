@@ -39,6 +39,9 @@ public class Game {
         System.out.println(placesQuestions.get(2).isCorrect("Massachusetts"));
         System.out.println(placesQuestions.get(2).isCorrect("Virginia"));
         System.out.println(placesQuestions.get(2).isCorrect("Washington DC"));
+        
+        
+        
     }
 
     public static void getQuestions(LinkedList<Question> list, String filePath)

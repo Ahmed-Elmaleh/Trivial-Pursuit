@@ -54,6 +54,12 @@ public class Controller {
 	private void getUserNames() {
 		
 		
+		
+		System.out.println("----------------------------------------");
+		
+		System.out.println("Users' names: ");
+		System.out.println("-------------");
+		
 		for(int i = 0; i < numberOfPlayers; i++) {
 			try {
 				JDialog.setDefaultLookAndFeelDecorated(true);
@@ -61,11 +67,15 @@ public class Controller {
 			        "", JOptionPane.QUESTION_MESSAGE, null, null, null);
 			    Player player = new Player((String)selection);
 			    players[i] = player;
+			    System.out.println("Player" + (i + 1) + " name:"+ (String) selection);
+			    
 			}catch(Exception e) {
 				System.out.println("Invalid name");
 			}
 			
 		}
+		
+		
 	}
 	
 	//Set up game board after player enter the number of players
