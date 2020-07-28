@@ -1,81 +1,46 @@
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+
+
 import java.awt.EventQueue;
-import java.io.BufferedReader;
-import java.io.IOException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
 
-public class Game {
+import javax.swing.Timer;
 
+
+public class Game implements Runnable {
+
+	public Game() {
+		board = new Board();
+	}
+	
     public static void main(String[] args) {
     	
-    	/**
-         * Launch the application.
-         */
-    	EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					createAndShowGUI();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+    	EventQueue.invokeLater(new Game());
+	
+    }
+    
+    public void run() {
+    	 new View(board);
+    	 
+    	//check if winner
+ 		Timer timer = new Timer(100, new ActionListener() {
+ 			@Override
+ 			public void actionPerformed(ActionEvent e) {
+ 				if(board.checkIfAnyOneWin()) {
+ 					System.out.println("The winner is " + board.getPlayers().get(board.getCurrentPlayer()).getName());
+ 					System.exit(0);
+ 				}
+ 			}
+ 		});
+ 		timer.start();
+    }
+    
+    
+    
     	
-        LinkedList<Question> eventQuestions = new LinkedList<Question>();
-        LinkedList<Question> peopleQuestions = new LinkedList<Question>();
-        LinkedList<Question> placesQuestions = new LinkedList<Question>();
-        LinkedList<Question> independenceDayHolidayQuestions = new LinkedList<Question>();
-
-
-
-        System.out.println("Simulating messages between GAME and QUESTION classes.\nGetting Questions...");
-        getQuestions(placesQuestions, "src/Question_Set/places.csv");
-        placesQuestions.get(2).printQuestion();
-        System.out.println("Simulating player answer for verification");
-        System.out.println(placesQuestions.get(2).isCorrect("Philadelphia"));
-        System.out.println(placesQuestions.get(2).isCorrect("Massachusetts"));
-        System.out.println(placesQuestions.get(2).isCorrect("Virginia"));
-        System.out.println(placesQuestions.get(2).isCorrect("Washington DC"));
-        
-        
-        
-    }
-
-    public static void getQuestions(LinkedList<Question> list, String filePath)
-    {
-        String line="";
-        try
-        {
-            BufferedReader br = new BufferedReader(new FileReader(filePath));
-            while ((line = br.readLine()) != null)
-            {
-                String[] data = line.split(",");
-
-                String[] answers = {data[1], data[2],data[3],data[4]};
-                Question q = new Question(data[0], answers, data[5]);
-                list.add(q);
-            }
-        }
-        catch (FileNotFoundException e)
-        {
-            e.printStackTrace();
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
-    }
-    
-    
-    public static void createAndShowGUI() throws Exception {
- 	    View view = new View();
-        Controller c = new Controller(view);
-        c.runController();
- 	}
- 	
+    private Board board;
+	
   
 }
 

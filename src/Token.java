@@ -13,6 +13,13 @@ public class Token {
         redSlot = false;
         whiteSlot = false;
     }
+    
+    public boolean isAllSlotsFilled() {
+    
+    	return (blueSlot == true && greenSlot == true && 
+    			redSlot == true && whiteSlot == true );
+    }
+    
 
     /********************* SET METHODS ******************/
     public void setBlueSlot(boolean blueSlot)
