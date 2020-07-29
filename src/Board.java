@@ -206,7 +206,7 @@ public class Board{
 	
 	
 	//get the players' names
-	public void getPlayersName() {
+	public void setPlayersName() {
 
 		
 		for(int i = 0; i < numberOfPlayers; i++) {
