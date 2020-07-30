@@ -9,6 +9,16 @@ public class Square {
     	this.color = "";
     }
 
+    //get button name
+    public String getButtonName() {
+    	return (button.getName());
+    }
+    
+    //set button name
+    public void setButtonName(String newName) {
+    	button.setName(newName);
+    }
+    
     public String getColor() {
 		return color;
 	}

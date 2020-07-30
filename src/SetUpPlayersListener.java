@@ -151,9 +151,9 @@ public class SetUpPlayersListener implements ActionListener {
 		        "", JOptionPane.QUESTION_MESSAGE, null, selectionValues, initialSelection);
 		    board.setNumberOfPlayers(Integer.parseInt((String)selection));
 		    
-		    board.setPlayersName();
+		    board.getAndStorePlayersName();
 		    
-		    board.setUpBoard(btnCenter,
+		    board.getSquareBoard().setUpSqaureBoard(btnCenter,
 					btnWedgeWhite, btnMidColumn1, btnWedgeBlue,
 					btnWedgeGreen, btnMidColumn2, btnMidColumn3,
 					btnMidColumn4, btnMidColumn5, btnMidColumn6,

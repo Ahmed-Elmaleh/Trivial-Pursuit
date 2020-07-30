@@ -24,7 +24,7 @@ public class RollDiceListener implements ActionListener{
 			Dice dice = new Dice();
 			board.setDice(dice);
 			
-			int diceValue = board.getDice().getDiceValue();
+			int diceValue = board.getDiceValue();
 			
 			textDiceResult.setText(Integer.toString(diceValue));
 			

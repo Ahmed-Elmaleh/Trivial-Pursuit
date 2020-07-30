@@ -1,4 +1,3 @@
-import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -18,7 +17,6 @@ public class MoveListener implements ActionListener {
 		this.btnRollDice = btnRollDice;
 		this.rollDiceResult = rollDiceResult;
 		this.rollDiceLabel = rollDiceLabel;
-		this.currentPlayer = board.getCurrentPlayer();
 		
 	}
 	
@@ -27,15 +25,19 @@ public class MoveListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		
 		board.showRollDice(btnRollDice, rollDiceLabel, rollDiceResult);
-		board.movePlayerPosition(button, messageTextArea);	
-		board.setBoardToUnable();
+
+		board.movePlayerPosition(button, messageTextArea);
+		
+		board.getSquareBoard().setAllButtonsToUnable();
+		
+		
 		messageTextArea.setVisible(false);
 		
 	}
 	
 
 	
-	private int currentPlayer;
+	
 	private Board board;
 	private JButton button;
 	private JTextArea messageTextArea;

@@ -1,7 +1,3 @@
-import java.util.Random;
-
-import javax.swing.JButton;
-
 public class Player {
 
 	public Player() {
@@ -11,6 +7,10 @@ public class Player {
 		this.token = new Token();
 		this.pos_x = -1;
 		this.pos_y = -1;
+	}
+	
+	public boolean isAllSlotsInTokenFilled() {
+		return (token.isAllSlotsFilled());
 	}
 	
 	public boolean isItFistStart() {
@@ -42,12 +42,6 @@ public class Player {
 	public void setToken(Token token) {
 		this.token = token;
 	}
-	public Square getSquare() {
-		return square;
-	}
-	public void setSquare(Square square) {
-		this.square = square;
-	}
 	
 	public int getPos_x() {
 		return pos_x;
@@ -62,11 +56,6 @@ public class Player {
 		this.pos_y = pos_y;
 	}
 	
-
-	
-	
-	final int BOARD_SIZE = 12;
-	
 	private boolean active;
 	private boolean isItFistStart;
 
@@ -74,16 +63,11 @@ public class Player {
 
 	private String name;
 	private Token token;
-	private Square square;
 	
 	
 	private int pos_x;
 	private int pos_y;
 	
 
-
-	
-		
-	
 	
 }
