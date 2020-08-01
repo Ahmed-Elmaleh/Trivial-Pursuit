@@ -3,7 +3,7 @@ public class Dice {
 	
 	
 	public Dice() {
-		this.diceValue = randomNumber();
+		this.diceValue = -1;
 	}
 	
 	public int getDiceValue() {
@@ -13,6 +13,10 @@ public class Dice {
 
 	public void setDiceValue(int diceValue) {
 		this.diceValue = diceValue;
+	}
+	
+	public void rollDice() {
+		diceValue = randomNumber();
 	}
 
 

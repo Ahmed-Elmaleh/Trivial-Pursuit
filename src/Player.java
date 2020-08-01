@@ -1,8 +1,7 @@
 public class Player {
 
 	public Player() {
-		this.isItFistStart = true;
-		this.active = false;
+		this.isItFromHub = true;
 		this.name = "";
 		this.token = new Token();
 		this.pos_x = -1;
@@ -13,21 +12,7 @@ public class Player {
 		return (token.isAllSlotsFilled());
 	}
 	
-	public boolean isItFistStart() {
-		return isItFistStart;
-	}
-
-	public void setItFistStart(boolean isItFistStart) {
-		this.isItFistStart = isItFistStart;
-	}
 	
-	public boolean isActive() {
-		return active;
-	}
-
-	public void setActive(boolean active) {
-		this.active = active;
-	}
 
 	public String getName() {
 		return name;
@@ -43,6 +28,14 @@ public class Player {
 		this.token = token;
 	}
 	
+	public boolean isItFromHub() {
+		return isItFromHub;
+	}
+
+	public void setItFromHub(boolean isItFromHub) {
+		this.isItFromHub = isItFromHub;
+	}
+
 	public int getPos_x() {
 		return pos_x;
 	}
@@ -56,11 +49,8 @@ public class Player {
 		this.pos_y = pos_y;
 	}
 	
-	private boolean active;
-	private boolean isItFistStart;
 
-
-
+	private boolean isItFromHub;
 	private String name;
 	private Token token;
 	

@@ -18,6 +18,40 @@ public class SquareBoard {
 		}
 	}
 	
+	//search button coordinate x using string name
+	
+	public int searchButtonPos_x(String buttonName) {
+		
+		int pos_x = -1;
+		
+		for(int i = 0; i < BOARD_SIZE; i++) {
+			for(int j = 0; j < BOARD_SIZE; j++) {
+				if(buttonName == squareBoard[i][i].getButton().getName()){
+					pos_x = i;
+				}
+			}
+		}
+		
+		return pos_x;
+	}
+	
+	//search button coordinate x using string name
+	
+		public int searchButtonPos_y(String buttonName) {
+			
+			int pos_y = -1;
+			
+			for(int i = 0; i < BOARD_SIZE; i++) {
+				for(int j = 0; j < BOARD_SIZE; j++) {
+					if(buttonName == squareBoard[i][i].getButton().getName()){
+						pos_y = i;
+					}
+				}
+			}
+			
+			return pos_y;
+		}
+	
 	//set all sqaure to unable
 	public void setAllButtonsToUnable() {		
 		for(int i = 0; i < BOARD_SIZE; i++) {
@@ -27,6 +61,17 @@ public class SquareBoard {
 			}
 		}			
 	}
+	
+	//set all sqaure to able
+	public void setAllButtonsTonable() {		
+		for(int i = 0; i < BOARD_SIZE; i++) {
+			for(int j = 0; j < BOARD_SIZE; j++ ) {
+				
+				squareBoard[i][j].getButton().setEnabled(true);	
+			}
+		}			
+	}
+		
 	
 	//get button name
 	public String getButtonName(int pos_x, int pos_y) {

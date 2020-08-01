@@ -87,8 +87,6 @@ public class Board{
 		
 		if(players.getPlayers().get(currentPlayer - 1).isItFistStart()) {
 			
-			
-			setBoardForStart(messageTextArea);	
 			players.getPlayers().get(currentPlayer - 1).setItFistStart(false);
 			
 		}else {		
@@ -103,9 +101,6 @@ public class Board{
 				
 			}else if(squareBoard.getButtonName(pos_x, pos_y) == "WEDGE") {
 				squareBoard.setButtonName(pos_x, pos_y, "WEDGE");
-			}else if(squareBoard.getButtonName(pos_x, pos_y) == "CENTER") {
-				squareBoard.setButtonName(pos_x, pos_y, "Trivial Purfuit");
-				
 			}else
 			{
 				squareBoard.setButtonName(pos_x, pos_y, "");
@@ -122,20 +117,30 @@ public class Board{
 	}
 	
 	//move player position
-	public void setPossipleMovePosition() {
+	public void setpossibleMovePosition() {
 		
-		if(!players.isThisPlayerReadyToGoToCenter(currentPlayer)) {
+		if(players.isThisPlayerOutFromHub(currentPlayer)) {
 		
 			int pos_x = players.getCurrentPositionX(currentPlayer);
 			int pos_y = players.getCurrentPositionY(currentPlayer);
-			
-			
 			int diceValue = dice.getDiceValue();
 			
-//			//This needs to be implemented. Will get out of bounds
-//			board[pos_x + diceValue][pos_y].getButton().setEnabled(true);
-//			board[pos_x][pos_y + diceValue].getButton().setEnabled(true);
-//		
+			int possible_Pos_x;
+			int possible_Pos_y;
+			
+			//possible position
+			
+			if(pos_x + diceValue >= 10) {
+				possible_Pos_x = diceValue + 5;
+				possible_Pos_y = 11;
+				
+				squareBoard.setButtonToAble(int pos_x, int pos_y);
+				
+				possible_Pos_x = 5 - diceValue;
+				
+			}
+			
+			
 	
 		}else {
 			
@@ -143,6 +148,8 @@ public class Board{
 			System.out.println("Someone got all token");
 		}
 	}
+
+	
 	
 	//show roll dice
 	public void showRollDice(JButton rollDice, JLabel JLabelResult, 
@@ -155,21 +162,21 @@ public class Board{
 		
 	}
 
-
+	//get Dice value
 	public int getDiceValue() {
 		return (dice.getDiceValue());
 	}
-	
-	//Player play fist time
-	public void setBoardForStart(JTextArea messageTextArea) {
-		
-		messageTextArea.setText(players.getCurrentPlayerName(currentPlayer) + ", Please select start position!");
-		messageTextArea.setVisible(true);
-		squareBoard.setAllButtonsToUnable();
-		
-				
+	//roll dice
+	public void rollDice() {
+		dice.rollDice();
 	}
-
+	
+	//roll dice, set up dice, and show result on board
+	public void excuteDice(JTextField textDiceResult) {
+		dice.rollDice();
+		int diceValue = dice.getDiceValue();
+		textDiceResult.setText(Integer.toString(diceValue));
+	}
 	
 	//get the players' names
 	public void getAndStorePlayersName() {
@@ -193,6 +200,7 @@ public class Board{
 		
 		
 	}
+	
 
 
 	//Display players on the board
@@ -208,7 +216,9 @@ public class Board{
 			JTextField textPlayer4Piece2, JTextField textPlayer4Piece3,
 			JTextField textPlayer4Piece4, JLabel lblPlayer1, JLabel lblPlayer2,
 			JLabel lblPlayer3, JLabel lblPlayer4, JLabel lblPlaying1,
-			JLabel lblPlaying2, JLabel lblPlaying3, JLabel lblPlaying4) {
+			JLabel lblPlaying2, JLabel lblPlaying3, JLabel lblPlaying4, 
+			JButton btnCenter, JLabel lblPlayer1Name, JLabel lblPlayer2Name, 
+			JLabel lblPlayer3Name, JLabel lblPlayer4Name) {
 
 	
 	
@@ -216,7 +226,7 @@ public class Board{
 	    
 	    lblResult.setVisible(true);
 	    btnRollDice.setVisible(true);
-	    btnRollDice.setEnabled(false);
+	    btnRollDice.setEnabled(true);
 	    textDiceResult.setVisible(true);
 	    
 
@@ -235,7 +245,8 @@ public class Board{
 				textPlayer1Piece4.setVisible(true);
 
 				
-				lblPlayer1.setText(players.getPlayers().get(ONE_PLAYER - 1).getName() + ":");
+				lblPlayer1Name.setText(players.getPlayers().get(ONE_PLAYER - 1).getName());
+				lblPlayer1Name.setVisible(true);
 				lblPlayer1.setVisible(true);
 		
 				break;
@@ -252,9 +263,11 @@ public class Board{
 				textPlayer2Piece3.setVisible(true);
 				textPlayer2Piece4.setVisible(true);
 				
-				lblPlayer1.setText(players.getPlayers().get(ONE_PLAYER - 1).getName() + ":");
-				lblPlayer2.setText(players.getPlayers().get(TWO_PLAYERS - 1).getName() + ":");
+				lblPlayer1Name.setText(players.getPlayers().get(ONE_PLAYER - 1).getName());
+				lblPlayer2Name.setText(players.getPlayers().get(TWO_PLAYERS - 1).getName());
 				
+				lblPlayer1Name.setVisible(true);
+				lblPlayer2Name.setVisible(true);
 				lblPlayer1.setVisible(true);
 				lblPlayer2.setVisible(true);
 	
@@ -277,10 +290,13 @@ public class Board{
 				textPlayer3Piece3.setVisible(true);
 				textPlayer3Piece4.setVisible(true);
 				
-				lblPlayer1.setText(players.getPlayers().get(ONE_PLAYER - 1).getName() + ":");
-				lblPlayer2.setText(players.getPlayers().get(TWO_PLAYERS - 1).getName() + ":");
-				lblPlayer3.setText(players.getPlayers().get(THREE_PLAYERS - 1).getName() + ":");
+				lblPlayer1Name.setText(players.getPlayers().get(ONE_PLAYER - 1).getName());
+				lblPlayer2Name.setText(players.getPlayers().get(TWO_PLAYERS - 1).getName());
+				lblPlayer3Name.setText(players.getPlayers().get(THREE_PLAYERS - 1).getName());
 				
+				lblPlayer1Name.setVisible(true);
+				lblPlayer2Name.setVisible(true);
+				lblPlayer3Name.setVisible(true);
 				lblPlayer1.setVisible(true);
 				lblPlayer2.setVisible(true);
 				lblPlayer3.setVisible(true);
@@ -311,12 +327,16 @@ public class Board{
 				textPlayer4Piece4.setVisible(true);
 				
 				
-				lblPlayer1.setText(players.getPlayers().get(ONE_PLAYER - 1).getName() + ":");
-				lblPlayer2.setText(players.getPlayers().get(TWO_PLAYERS - 1).getName() + ":");
-				lblPlayer3.setText(players.getPlayers().get(THREE_PLAYERS - 1).getName() + ":");
-				lblPlayer4.setText(players.getPlayers().get(FOUR_PLAYERS - 1).getName() + ":");
+				lblPlayer1Name.setText(players.getPlayers().get(ONE_PLAYER - 1).getName());
+				lblPlayer2Name.setText(players.getPlayers().get(TWO_PLAYERS - 1).getName());
+				lblPlayer3Name.setText(players.getPlayers().get(THREE_PLAYERS - 1).getName());
+				lblPlayer4Name.setText(players.getPlayers().get(FOUR_PLAYERS - 1).getName());
 				
 				
+				lblPlayer1Name.setVisible(true);
+				lblPlayer2Name.setVisible(true);
+				lblPlayer3Name.setVisible(true);
+				lblPlayer4Name.setVisible(true);
 				lblPlayer1.setVisible(true);
 				lblPlayer2.setVisible(true);
 				lblPlayer3.setVisible(true);
@@ -327,6 +347,35 @@ public class Board{
 		}
 		SelectPlayerToPlayFirst();
 		indicateWhoPlaying(lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4);
+		setUpDefaultPositionsOfAllPlayers();
+		showAllPlayerAtStart(btnCenter);
+	}
+	
+
+	
+	//instruction for player
+	public void instructions(JTextArea messageTextArea, String message) {
+		
+		messageTextArea.setText(message);
+		messageTextArea.setVisible(true);
+			
+	}
+	
+	//set up default position of all players
+	
+	private void setUpDefaultPositionsOfAllPlayers() {
+		int pos_x = squareBoard.searchButtonPos_x("CENTER");
+		int pos_y = squareBoard.searchButtonPos_y("CENTER");
+		
+		players.setDefaultPositionForPlayers(pos_x, pos_y);
+			
+	}
+	
+	//Display players on hub
+	private void showAllPlayerAtStart(JButton btnCenter) {
+		
+		players.displayPlayersOnHub(btnCenter);
+		
 	}
 	
 

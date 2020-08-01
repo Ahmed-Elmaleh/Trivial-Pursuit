@@ -43,6 +43,26 @@ public class Players {
 		return (players.get(currentPlayer - 1).getName());
 	}
 	
+	//set default position for players
+	public void setDefaultPositionForPlayers(int pos_x, int pos_y) {
+		for(int i = 0; i < players.size(); i++) {
+			players.get(i).setPos_x(pos_x);
+			players.get(i).setPos_y(pos_y);
+		}
+	}
+	
+	//Display players on hub
+	public void displayPlayersOnHub(JButton btnCenter) {
+		
+		String text = "";
+		
+		for(int i = 0; i < players.size(); i++) {
+			text += Integer.toString(i + 1);
+		}
+		
+		btnCenter.setText(text);
+	}
+	
 	
 	//set Player new position
 	public void storePlayerNewPostion(SquareBoard squareBoard, JButton button, int currentPlayer){
@@ -62,6 +82,11 @@ public class Players {
 			}
 		}
 			
+	}
+	
+	//check if current player is out from hub
+	public boolean isThisPlayerOutFromHub(int currentPlayer) {
+		return players.get(currentPlayer - 1).isItFromHub();
 	}
 		
 	

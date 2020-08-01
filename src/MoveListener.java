@@ -28,7 +28,7 @@ public class MoveListener implements ActionListener {
 
 		board.movePlayerPosition(button, messageTextArea);
 		
-		board.getSquareBoard().setAllButtonsToUnable();
+		//board.getSquareBoard().setAllButtonsToUnable();
 		
 		
 		messageTextArea.setVisible(false);

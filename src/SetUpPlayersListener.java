@@ -38,7 +38,8 @@ public class SetUpPlayersListener implements ActionListener {
 			JButton btnBottom4, JButton btnBottom5, JButton btnBottomRollAgain2, JButton btnBottom6,
 			JButton btnBottom7, JButton btnBottom8, JButton btnTop1, JButton btnTop2, JButton btnTopRollAgain1,
 			JButton btnTop3, JButton btnTop4, JButton btnTop5, JButton btnTop6, JButton btnTopRollAgain2,
-			JButton btnTop7, JButton btnTop8, JTextArea messageTextArea) {
+			JButton btnTop7, JButton btnTop8, JTextArea messageTextArea, JLabel lblPlayer1Name, 
+			JLabel lblPlayer2Name, JLabel lblPlayer3Name, JLabel lblPlayer4Name) {
 		
 
 		
@@ -136,6 +137,10 @@ public class SetUpPlayersListener implements ActionListener {
 		this.btnTopRollAgain2 = btnTopRollAgain2;
 		this.btnTop7 = btnTop7;
 		this.btnTop8 = btnTop8;
+		this.lblPlayer1Name = lblPlayer1Name;
+		this.lblPlayer2Name = lblPlayer2Name;
+		this.lblPlayer3Name = lblPlayer3Name;
+		this.lblPlayer4Name = lblPlayer4Name;
 		
 	
 	}
@@ -182,9 +187,15 @@ public class SetUpPlayersListener implements ActionListener {
 					textPlayer4Piece2, textPlayer4Piece3,
 					textPlayer4Piece4, lblPlayer1, lblPlayer2,
 					lblPlayer3, lblPlayer4, lblPlaying1,
-					lblPlaying2, lblPlaying3, lblPlaying4);
+					lblPlaying2, lblPlaying3, lblPlaying4, btnCenter, 
+					lblPlayer1Name, lblPlayer2Name, lblPlayer3Name, lblPlayer4Name);
 		    
-		    board.setBoardForStart(messageTextArea);
+		    
+		    int currentPlayer = board.getCurrentPlayer();
+		    
+		    String message = board.getPlayers().getCurrentPlayerName(currentPlayer) + ", Please roll the dice!";
+		    
+		    board.instructions(messageTextArea, message);
 		    
 		   		    
 		    
@@ -198,6 +209,11 @@ public class SetUpPlayersListener implements ActionListener {
 	}
 	
 	private JTextArea messageTextArea;
+	
+	private JLabel lblPlayer1Name;
+	private JLabel lblPlayer2Name;
+	private JLabel lblPlayer3Name;
+	private JLabel lblPlayer4Name;
 	
 	private JLabel lblResult;
 	private JButton btnRollDice;

@@ -8,6 +8,7 @@ import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.ImageIcon;
 
 public class View {
 	
@@ -28,28 +29,7 @@ public class View {
 		frmView.getContentPane().setLayout(null);
 		frmView.setVisible(true);
 		
-		
-		
-		lblResult = new JLabel("Result:");
-		lblResult.setBounds(816, 94, 70, 15);
-		lblResult.setVisible(false);
-		frmView.getContentPane().add(lblResult);
-		
-		textDiceResult = new JTextField();
-		textDiceResult.setHorizontalAlignment(SwingConstants.CENTER);
-		textDiceResult.setBounds(870, 89, 125, 19);
-		textDiceResult.setColumns(10);
-		textDiceResult.setVisible(false);
-		frmView.getContentPane().add(textDiceResult);
-		
 
-		btnRollDice = new JButton("ROLL DICE");
-		btnRollDice.setFont(new Font("Dialog", Font.BOLD, 16));
-		btnRollDice.setBounds(809, 24, 189, 58);
-		btnRollDice.setVisible(false);
-		frmView.getContentPane().add(btnRollDice);
-		btnRollDice.addActionListener(new RollDiceListener(board, textDiceResult, btnRollDice));
-		
 		
 		lblPlayer1 = new JLabel("Player 1:");
 		lblPlayer1.setForeground(Color.YELLOW);
@@ -76,7 +56,7 @@ public class View {
 		frmView.getContentPane().add(lblPlayer4);
 		
 		textPlayer1Piece1 = new JTextField();
-		textPlayer1Piece1.setBounds(924, 135, 38, 38);
+		textPlayer1Piece1.setBounds(924, 146, 38, 38);
 		textPlayer1Piece1.setColumns(10);
 		textPlayer1Piece1.setVisible(false);
 		frmView.getContentPane().add(textPlayer1Piece1);
@@ -84,96 +64,96 @@ public class View {
 		
 		textPlayer1Piece2 = new JTextField();
 		textPlayer1Piece2.setColumns(10);
-		textPlayer1Piece2.setBounds(960, 135, 38, 38);
+		textPlayer1Piece2.setBounds(960, 146, 38, 38);
 		textPlayer1Piece2.setVisible(false);
 		frmView.getContentPane().add(textPlayer1Piece2);
 		
 		textPlayer1Piece3 = new JTextField();
 		textPlayer1Piece3.setColumns(10);
-		textPlayer1Piece3.setBounds(924, 171, 38, 38);
+		textPlayer1Piece3.setBounds(924, 182, 38, 38);
 		textPlayer1Piece3.setVisible(false);
 		frmView.getContentPane().add(textPlayer1Piece3);
 		
 		textPlayer1Piece4 = new JTextField();
 		textPlayer1Piece4.setColumns(10);
-		textPlayer1Piece4.setBounds(960, 171, 38, 38);
+		textPlayer1Piece4.setBounds(960, 182, 38, 38);
 		textPlayer1Piece4.setVisible(false);
 		frmView.getContentPane().add(textPlayer1Piece4);
 		
 		textPlayer2Piece1 = new JTextField();
 		textPlayer2Piece1.setColumns(10);
-		textPlayer2Piece1.setBounds(924, 250, 38, 38);
+		textPlayer2Piece1.setBounds(924, 252, 38, 38);
 		textPlayer2Piece1.setVisible(false);
 		frmView.getContentPane().add(textPlayer2Piece1);
 		
 		textPlayer2Piece2 = new JTextField();
 		textPlayer2Piece2.setColumns(10);
-		textPlayer2Piece2.setBounds(960, 250, 38, 38);
+		textPlayer2Piece2.setBounds(960, 252, 38, 38);
 		textPlayer2Piece2.setVisible(false);
 		frmView.getContentPane().add(textPlayer2Piece2);
 		
 		textPlayer2Piece3 = new JTextField();
 		textPlayer2Piece3.setColumns(10);
-		textPlayer2Piece3.setBounds(960, 286, 38, 38);
+		textPlayer2Piece3.setBounds(960, 288, 38, 38);
 		textPlayer2Piece3.setVisible(false);
 		frmView.getContentPane().add(textPlayer2Piece3);
 		
 		textPlayer2Piece4 = new JTextField();
 		textPlayer2Piece4.setColumns(10);
-		textPlayer2Piece4.setBounds(924, 286, 38, 38);
+		textPlayer2Piece4.setBounds(924, 288, 38, 38);
 		textPlayer2Piece4.setVisible(false);
 		frmView.getContentPane().add(textPlayer2Piece4);
 		
 		textPlayer3Piece1 = new JTextField();
 		textPlayer3Piece1.setColumns(10);
-		textPlayer3Piece1.setBounds(924, 352, 38, 38);
+		textPlayer3Piece1.setBounds(924, 368, 38, 38);
 		textPlayer3Piece1.setVisible(false);
 		frmView.getContentPane().add(textPlayer3Piece1);
 		
 		textPlayer3Piece2 = new JTextField();
 		textPlayer3Piece2.setColumns(10);
-		textPlayer3Piece2.setBounds(960, 352, 38, 38);
+		textPlayer3Piece2.setBounds(960, 368, 38, 38);
 		textPlayer3Piece2.setVisible(false);
 		frmView.getContentPane().add(textPlayer3Piece2);
 		
 		textPlayer3Piece3 = new JTextField();
 		textPlayer3Piece3.setColumns(10);
-		textPlayer3Piece3.setBounds(960, 388, 38, 38);
+		textPlayer3Piece3.setBounds(960, 404, 38, 38);
 		textPlayer3Piece3.setVisible(false);
 		frmView.getContentPane().add(textPlayer3Piece3);
 		
 		textPlayer3Piece4 = new JTextField();
 		textPlayer3Piece4.setColumns(10);
-		textPlayer3Piece4.setBounds(924, 388, 38, 38);
+		textPlayer3Piece4.setBounds(924, 404, 38, 38);
 		textPlayer3Piece4.setVisible(false);
 		frmView.getContentPane().add(textPlayer3Piece4);
 		
 		textPlayer4Piece1 = new JTextField();
 		textPlayer4Piece1.setColumns(10);
-		textPlayer4Piece1.setBounds(924, 452, 38, 38);
+		textPlayer4Piece1.setBounds(921, 475, 38, 38);
 		textPlayer4Piece1.setVisible(false);
 		frmView.getContentPane().add(textPlayer4Piece1);
 		
 		textPlayer4Piece2 = new JTextField();
 		textPlayer4Piece2.setColumns(10);
-		textPlayer4Piece2.setBounds(960, 452, 38, 38);
+		textPlayer4Piece2.setBounds(957, 475, 38, 38);
 		textPlayer4Piece2.setVisible(false);
 		frmView.getContentPane().add(textPlayer4Piece2);
 		
 		textPlayer4Piece3 = new JTextField();
 		textPlayer4Piece3.setColumns(10);
-		textPlayer4Piece3.setBounds(960, 488, 38, 38);
+		textPlayer4Piece3.setBounds(957, 511, 38, 38);
 		textPlayer4Piece3.setVisible(false);
 		frmView.getContentPane().add(textPlayer4Piece3);
 		
 		textPlayer4Piece4 = new JTextField();
 		textPlayer4Piece4.setColumns(10);
-		textPlayer4Piece4.setBounds(924, 488, 38, 38);
+		textPlayer4Piece4.setBounds(921, 511, 38, 38);
 		textPlayer4Piece4.setVisible(false);
 		frmView.getContentPane().add(textPlayer4Piece4);
 		
 		lblPlaying1 = new JLabel("Playing");
-		lblPlaying1.setBounds(1008, 162, 70, 15);
+		lblPlaying1.setBounds(1008, 182, 70, 15);
 		lblPlaying1.setVisible(false);
 		frmView.getContentPane().add(lblPlaying1);
 		
@@ -183,21 +163,19 @@ public class View {
 		frmView.getContentPane().add(lblPlaying2);
 		
 		lblPlaying3 = new JLabel("Playing");
-		lblPlaying3.setBounds(1008, 375, 70, 15);
+		lblPlaying3.setBounds(1008, 391, 70, 15);
 		lblPlaying3.setVisible(false);
 		frmView.getContentPane().add(lblPlaying3);
 		
 		lblPlaying4 = new JLabel("Playing");
-		lblPlaying4.setBounds(1008, 475, 70, 15);
+		lblPlaying4.setBounds(1008, 499, 70, 15);
 		lblPlaying4.setVisible(false);
 		frmView.getContentPane().add(lblPlaying4);
 		
 	
 		
 		
-		messageTextArea = new JTextArea(
-			    "Please sellect start postion"
-			);
+		messageTextArea = new JTextArea("");
 		messageTextArea.setSize(223, 124);
 		messageTextArea.setLocation(809, 571);
 		messageTextArea.setFont(new Font("Serif", Font.ITALIC, 16));
@@ -212,7 +190,26 @@ public class View {
 		btnExitGame.setBounds(806, 714, 135, 58);
 		frmView.getContentPane().add(btnExitGame);
 		
+		lblResult = new JLabel("Result:");
+		lblResult.setBounds(816, 94, 70, 15);
+		lblResult.setVisible(false);
+		frmView.getContentPane().add(lblResult);
 		
+		textDiceResult = new JTextField();
+		textDiceResult.setHorizontalAlignment(SwingConstants.CENTER);
+		textDiceResult.setBounds(870, 89, 125, 19);
+		textDiceResult.setColumns(10);
+		textDiceResult.setVisible(false);
+		frmView.getContentPane().add(textDiceResult);
+		
+
+		btnRollDice = new JButton("ROLL DICE");
+		btnRollDice.setFont(new Font("Dialog", Font.BOLD, 16));
+		btnRollDice.setBounds(809, 24, 189, 58);
+		btnRollDice.setVisible(false);
+		frmView.getContentPane().add(btnRollDice);
+		btnRollDice.addActionListener(new RollDiceListener(board, 
+				textDiceResult, btnRollDice, messageTextArea));
 		
 		
 		
@@ -237,7 +234,6 @@ public class View {
 		btnMidColumn1 = new JButton("");
 		btnMidColumn1.setBackground(Color.GREEN);
 		btnMidColumn1.setToolTipText("");
-		btnMidColumn1.setHorizontalAlignment(SwingConstants.LEFT);
 		btnMidColumn1.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnMidColumn1.setBounds(354, 81, 58, 58);
 		frmView.getContentPane().add(btnMidColumn1);
@@ -269,7 +265,6 @@ public class View {
 		btnMidColumn2 = new JButton("");
 		btnMidColumn2.setBackground(Color.BLUE);
 		btnMidColumn2.setToolTipText("");
-		btnMidColumn2.setHorizontalAlignment(SwingConstants.LEFT);
 		btnMidColumn2.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnMidColumn2.setBounds(353, 137, 60, 58);
 		frmView.getContentPane().add(btnMidColumn2);
@@ -281,7 +276,6 @@ public class View {
 		btnMidColumn3 = new JButton("");
 		btnMidColumn3.setBackground(Color.RED);
 		btnMidColumn3.setToolTipText("");
-		btnMidColumn3.setHorizontalAlignment(SwingConstants.LEFT);
 		btnMidColumn3.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnMidColumn3.setBounds(354, 195, 58, 58);
 		frmView.getContentPane().add(btnMidColumn3);
@@ -291,9 +285,9 @@ public class View {
 				messageTextArea, btnRollDice, textDiceResult, lblResult ));
 		
 		btnMidColumn4 = new JButton("");
+		btnMidColumn4.setForeground(new Color(0, 0, 0));
 		btnMidColumn4.setBackground(Color.WHITE);
 		btnMidColumn4.setToolTipText("");
-		btnMidColumn4.setHorizontalAlignment(SwingConstants.LEFT);
 		btnMidColumn4.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnMidColumn4.setBounds(354, 252, 58, 58);
 		frmView.getContentPane().add(btnMidColumn4);
@@ -305,7 +299,6 @@ public class View {
 		btnMidColumn5 = new JButton("");
 		btnMidColumn5.setBackground(Color.RED);
 		btnMidColumn5.setToolTipText("");
-		btnMidColumn5.setHorizontalAlignment(SwingConstants.LEFT);
 		btnMidColumn5.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnMidColumn5.setBounds(360, 486, 58, 58);
 		frmView.getContentPane().add(btnMidColumn5);
@@ -317,7 +310,6 @@ public class View {
 		btnMidColumn6 = new JButton("");
 		btnMidColumn6.setBackground(Color.GREEN);
 		btnMidColumn6.setToolTipText("");
-		btnMidColumn6.setHorizontalAlignment(SwingConstants.LEFT);
 		btnMidColumn6.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnMidColumn6.setBounds(360, 543, 58, 58);
 		frmView.getContentPane().add(btnMidColumn6);
@@ -329,7 +321,6 @@ public class View {
 		btnMidColumn7 = new JButton("");
 		btnMidColumn7.setBackground(Color.BLUE);
 		btnMidColumn7.setToolTipText("");
-		btnMidColumn7.setHorizontalAlignment(SwingConstants.LEFT);
 		btnMidColumn7.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnMidColumn7.setBounds(360, 598, 58, 58);
 		frmView.getContentPane().add(btnMidColumn7);
@@ -341,7 +332,6 @@ public class View {
 		btnMidColumn8 = new JButton("");
 		btnMidColumn8.setBackground(Color.WHITE);
 		btnMidColumn8.setToolTipText("");
-		btnMidColumn8.setHorizontalAlignment(SwingConstants.LEFT);
 		btnMidColumn8.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnMidColumn8.setBounds(360, 656, 58, 58);
 		frmView.getContentPane().add(btnMidColumn8);
@@ -362,7 +352,6 @@ public class View {
 		btnRight8 = new JButton("");
 		btnRight8.setBackground(Color.BLUE);
 		btnRight8.setToolTipText("");
-		btnRight8.setHorizontalAlignment(SwingConstants.LEFT);
 		btnRight8.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnRight8.setBounds(699, 628, 60, 60);
 		frmView.getContentPane().add(btnRight8);
@@ -374,7 +363,6 @@ public class View {
 		btnRight7 = new JButton("");
 		btnRight7.setBackground(Color.RED);
 		btnRight7.setToolTipText("");
-		btnRight7.setHorizontalAlignment(SwingConstants.LEFT);
 		btnRight7.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnRight7.setBounds(700, 572, 58, 59);
 		frmView.getContentPane().add(btnRight7);
@@ -386,7 +374,6 @@ public class View {
 		btnRight6 = new JButton("");
 		btnRight6.setBackground(Color.GREEN);
 		btnRight6.setToolTipText("");
-		btnRight6.setHorizontalAlignment(SwingConstants.LEFT);
 		btnRight6.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnRight6.setBounds(700, 513, 58, 60);
 		frmView.getContentPane().add(btnRight6);
@@ -398,7 +385,6 @@ public class View {
 		btnRight5 = new JButton("");
 		btnRight5.setBackground(Color.WHITE);
 		btnRight5.setToolTipText("");
-		btnRight5.setHorizontalAlignment(SwingConstants.LEFT);
 		btnRight5.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnRight5.setBounds(700, 454, 58, 60);
 		frmView.getContentPane().add(btnRight5);
@@ -409,7 +395,6 @@ public class View {
 		
 		btnRightRollAgain2 = new JButton("RAgain");
 		btnRightRollAgain2.setToolTipText("");
-		btnRightRollAgain2.setHorizontalAlignment(SwingConstants.LEFT);
 		btnRightRollAgain2.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnRightRollAgain2.setBounds(700, 395, 58, 60);
 		frmView.getContentPane().add(btnRightRollAgain2);
@@ -422,7 +407,6 @@ public class View {
 		btnRight4.setForeground(Color.YELLOW);
 		btnRight4.setBackground(Color.WHITE);
 		btnRight4.setToolTipText("");
-		btnRight4.setHorizontalAlignment(SwingConstants.LEFT);
 		btnRight4.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnRight4.setBounds(700, 336, 58, 60);
 		frmView.getContentPane().add(btnRight4);
@@ -434,7 +418,6 @@ public class View {
 		btnRight3 = new JButton("");
 		btnRight3.setBackground(Color.RED);
 		btnRight3.setToolTipText("");
-		btnRight3.setHorizontalAlignment(SwingConstants.LEFT);
 		btnRight3.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnRight3.setBounds(700, 277, 58, 60);
 		frmView.getContentPane().add(btnRight3);
@@ -447,7 +430,6 @@ public class View {
 		btnRight2.setForeground(Color.YELLOW);
 		btnRight2.setBackground(Color.BLUE);
 		btnRight2.setToolTipText("");
-		btnRight2.setHorizontalAlignment(SwingConstants.LEFT);
 		btnRight2.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnRight2.setBounds(699, 218, 60, 60);
 		frmView.getContentPane().add(btnRight2);
@@ -459,7 +441,6 @@ public class View {
 		btnMidRow5 = new JButton("");
 		btnMidRow5.setBackground(Color.BLUE);
 		btnMidRow5.setToolTipText("");
-		btnMidRow5.setHorizontalAlignment(SwingConstants.LEFT);
 		btnMidRow5.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnMidRow5.setBounds(472, 368, 58, 58);
 		frmView.getContentPane().add(btnMidRow5);
@@ -471,7 +452,6 @@ public class View {
 		btnMidRow6 = new JButton("");
 		btnMidRow6.setBackground(Color.GREEN);
 		btnMidRow6.setToolTipText("");
-		btnMidRow6.setHorizontalAlignment(SwingConstants.LEFT);
 		btnMidRow6.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnMidRow6.setBounds(528, 368, 58, 58);
 		frmView.getContentPane().add(btnMidRow6);
@@ -483,7 +463,6 @@ public class View {
 		btnMidRow7 = new JButton("");
 		btnMidRow7.setBackground(Color.RED);
 		btnMidRow7.setToolTipText("");
-		btnMidRow7.setHorizontalAlignment(SwingConstants.LEFT);
 		btnMidRow7.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnMidRow7.setBounds(585, 368, 58, 58);
 		frmView.getContentPane().add(btnMidRow7);
@@ -495,7 +474,6 @@ public class View {
 		btnMidRow8 = new JButton("");
 		btnMidRow8.setBackground(Color.WHITE);
 		btnMidRow8.setToolTipText("");
-		btnMidRow8.setHorizontalAlignment(SwingConstants.LEFT);
 		btnMidRow8.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnMidRow8.setBounds(642, 368, 58, 58);
 		frmView.getContentPane().add(btnMidRow8);
@@ -507,7 +485,6 @@ public class View {
 		
 		btnRightRollAgain1 = new JButton("RAgain");
 		btnRightRollAgain1.setToolTipText("");
-		btnRightRollAgain1.setHorizontalAlignment(SwingConstants.LEFT);
 		btnRightRollAgain1.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnRightRollAgain1.setBounds(700, 162, 58, 58);
 		frmView.getContentPane().add(btnRightRollAgain1);
@@ -519,7 +496,6 @@ public class View {
 		btnRight1 = new JButton("");
 		btnRight1.setBackground(Color.GREEN);
 		btnRight1.setToolTipText("");
-		btnRight1.setHorizontalAlignment(SwingConstants.LEFT);
 		btnRight1.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnRight1.setBounds(700, 108, 58, 58);
 		frmView.getContentPane().add(btnRight1);
@@ -531,7 +507,6 @@ public class View {
 		btnMidRow4 = new JButton("");
 		btnMidRow4.setBackground(Color.GREEN);
 		btnMidRow4.setToolTipText("");
-		btnMidRow4.setHorizontalAlignment(SwingConstants.LEFT);
 		btnMidRow4.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnMidRow4.setBounds(239, 361, 58, 58);
 		frmView.getContentPane().add(btnMidRow4);
@@ -543,7 +518,6 @@ public class View {
 		btnMidRow3 = new JButton("");
 		btnMidRow3.setBackground(Color.WHITE);
 		btnMidRow3.setToolTipText("");
-		btnMidRow3.setHorizontalAlignment(SwingConstants.LEFT);
 		btnMidRow3.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnMidRow3.setBounds(183, 361, 58, 58);
 		frmView.getContentPane().add(btnMidRow3);
@@ -555,7 +529,6 @@ public class View {
 		btnMidRow2 = new JButton("");
 		btnMidRow2.setBackground(Color.BLUE);
 		btnMidRow2.setToolTipText("");
-		btnMidRow2.setHorizontalAlignment(SwingConstants.LEFT);
 		btnMidRow2.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnMidRow2.setBounds(126, 361, 58, 58);
 		frmView.getContentPane().add(btnMidRow2);
@@ -567,7 +540,6 @@ public class View {
 		btnMidRow1 = new JButton("");
 		btnMidRow1.setBackground(Color.RED);
 		btnMidRow1.setToolTipText("");
-		btnMidRow1.setHorizontalAlignment(SwingConstants.LEFT);
 		btnMidRow1.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnMidRow1.setBounds(69, 361, 58, 58);
 		frmView.getContentPane().add(btnMidRow1);
@@ -579,7 +551,6 @@ public class View {
 		btnLeft1 = new JButton("");
 		btnLeft1.setBackground(Color.BLUE);
 		btnLeft1.setToolTipText("");
-		btnLeft1.setHorizontalAlignment(SwingConstants.LEFT);
 		btnLeft1.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnLeft1.setBounds(12, 104, 58, 60);
 		frmView.getContentPane().add(btnLeft1);
@@ -592,7 +563,6 @@ public class View {
 		btnLeft2 = new JButton("");
 		btnLeft2.setBackground(Color.RED);
 		btnLeft2.setToolTipText("");
-		btnLeft2.setHorizontalAlignment(SwingConstants.LEFT);
 		btnLeft2.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnLeft2.setBounds(12, 163, 58, 59);
 		frmView.getContentPane().add(btnLeft2);
@@ -604,7 +574,6 @@ public class View {
 		btnLeft3 = new JButton("");
 		btnLeft3.setBackground(Color.GREEN);
 		btnLeft3.setToolTipText("");
-		btnLeft3.setHorizontalAlignment(SwingConstants.LEFT);
 		btnLeft3.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnLeft3.setBounds(12, 218, 58, 60);
 		frmView.getContentPane().add(btnLeft3);
@@ -616,7 +585,6 @@ public class View {
 		btnLeft4 = new JButton("");
 		btnLeft4.setBackground(Color.WHITE);
 		btnLeft4.setToolTipText("");
-		btnLeft4.setHorizontalAlignment(SwingConstants.LEFT);
 		btnLeft4.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnLeft4.setBounds(12, 277, 58, 60);
 		frmView.getContentPane().add(btnLeft4);
@@ -629,7 +597,6 @@ public class View {
 		btnLeft5 = new JButton("");
 		btnLeft5.setBackground(Color.RED);
 		btnLeft5.setToolTipText("");
-		btnLeft5.setHorizontalAlignment(SwingConstants.LEFT);
 		btnLeft5.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnLeft5.setBounds(12, 334, 58, 61);
 		frmView.getContentPane().add(btnLeft5);
@@ -641,7 +608,6 @@ public class View {
 		btnLeft6 = new JButton("");
 		btnLeft6.setBackground(Color.BLUE);
 		btnLeft6.setToolTipText("");
-		btnLeft6.setHorizontalAlignment(SwingConstants.LEFT);
 		btnLeft6.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnLeft6.setBounds(12, 394, 58, 61);
 		frmView.getContentPane().add(btnLeft6);
@@ -652,7 +618,6 @@ public class View {
 		
 		btnLeftRollAgain1 = new JButton("RAgain");
 		btnLeftRollAgain1.setToolTipText("");
-		btnLeftRollAgain1.setHorizontalAlignment(SwingConstants.LEFT);
 		btnLeftRollAgain1.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnLeftRollAgain1.setBounds(12, 451, 58, 61);
 		frmView.getContentPane().add(btnLeftRollAgain1);
@@ -664,7 +629,6 @@ public class View {
 		btnLeft7 = new JButton("");
 		btnLeft7.setBackground(Color.WHITE);
 		btnLeft7.setToolTipText("");
-		btnLeft7.setHorizontalAlignment(SwingConstants.LEFT);
 		btnLeft7.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnLeft7.setBounds(12, 511, 58, 60);
 		frmView.getContentPane().add(btnLeft7);
@@ -676,7 +640,6 @@ public class View {
 		btnLeft8 = new JButton("");
 		btnLeft8.setBackground(Color.GREEN);
 		btnLeft8.setToolTipText("");
-		btnLeft8.setHorizontalAlignment(SwingConstants.LEFT);
 		btnLeft8.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnLeft8.setBounds(12, 570, 58, 60);
 		frmView.getContentPane().add(btnLeft8);
@@ -687,7 +650,6 @@ public class View {
 		
 		btnLeftRollAgain2 = new JButton("RAgain");
 		btnLeftRollAgain2.setToolTipText("");
-		btnLeftRollAgain2.setHorizontalAlignment(SwingConstants.LEFT);
 		btnLeftRollAgain2.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnLeftRollAgain2.setBounds(12, 628, 58, 60);
 		frmView.getContentPane().add(btnLeftRollAgain2);
@@ -699,7 +661,6 @@ public class View {
 		btnBottom1 = new JButton("");
 		btnBottom1.setBackground(Color.GREEN);
 		btnBottom1.setToolTipText("");
-		btnBottom1.setHorizontalAlignment(SwingConstants.LEFT);
 		btnBottom1.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnBottom1.setBounds(96, 714, 60, 58);
 		frmView.getContentPane().add(btnBottom1);
@@ -711,7 +672,6 @@ public class View {
 		btnBottom2 = new JButton("");
 		btnBottom2.setBackground(Color.BLUE);
 		btnBottom2.setToolTipText("");
-		btnBottom2.setHorizontalAlignment(SwingConstants.LEFT);
 		btnBottom2.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnBottom2.setBounds(155, 714, 60, 58);
 		frmView.getContentPane().add(btnBottom2);
@@ -722,7 +682,6 @@ public class View {
 		
 		btnBottomRollAgain1 = new JButton("RAgain");
 		btnBottomRollAgain1.setToolTipText("");
-		btnBottomRollAgain1.setHorizontalAlignment(SwingConstants.LEFT);
 		btnBottomRollAgain1.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnBottomRollAgain1.setBounds(214, 714, 60, 58);
 		frmView.getContentPane().add(btnBottomRollAgain1);
@@ -734,7 +693,6 @@ public class View {
 		btnBottom3 = new JButton("");
 		btnBottom3.setBackground(Color.WHITE);
 		btnBottom3.setToolTipText("");
-		btnBottom3.setHorizontalAlignment(SwingConstants.LEFT);
 		btnBottom3.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnBottom3.setBounds(272, 714, 60, 58);
 		frmView.getContentPane().add(btnBottom3);
@@ -746,7 +704,6 @@ public class View {
 		btnBottom4 = new JButton("");
 		btnBottom4.setBackground(Color.RED);
 		btnBottom4.setToolTipText("");
-		btnBottom4.setHorizontalAlignment(SwingConstants.LEFT);
 		btnBottom4.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnBottom4.setBounds(330, 714, 60, 58);
 		frmView.getContentPane().add(btnBottom4);
@@ -758,7 +715,6 @@ public class View {
 		btnBottom5 = new JButton("");
 		btnBottom5.setBackground(Color.GREEN);
 		btnBottom5.setToolTipText("");
-		btnBottom5.setHorizontalAlignment(SwingConstants.LEFT);
 		btnBottom5.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnBottom5.setBounds(389, 714, 60, 58);
 		frmView.getContentPane().add(btnBottom5);
@@ -769,7 +725,6 @@ public class View {
 		
 		btnBottomRollAgain2 = new JButton("RAgain");
 		btnBottomRollAgain2.setToolTipText("");
-		btnBottomRollAgain2.setHorizontalAlignment(SwingConstants.LEFT);
 		btnBottomRollAgain2.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnBottomRollAgain2.setBounds(447, 714, 60, 58);
 		frmView.getContentPane().add(btnBottomRollAgain2);
@@ -781,7 +736,6 @@ public class View {
 		btnBottom6 = new JButton("");
 		btnBottom6.setBackground(Color.RED);
 		btnBottom6.setToolTipText("");
-		btnBottom6.setHorizontalAlignment(SwingConstants.LEFT);
 		btnBottom6.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnBottom6.setBounds(505, 714, 60, 58);
 		frmView.getContentPane().add(btnBottom6);
@@ -793,7 +747,6 @@ public class View {
 		btnBottom7 = new JButton("");
 		btnBottom7.setBackground(Color.BLUE);
 		btnBottom7.setToolTipText("");
-		btnBottom7.setHorizontalAlignment(SwingConstants.LEFT);
 		btnBottom7.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnBottom7.setBounds(562, 714, 60, 58);
 		frmView.getContentPane().add(btnBottom7);
@@ -805,7 +758,6 @@ public class View {
 		btnBottom8 = new JButton("");
 		btnBottom8.setBackground(Color.WHITE);
 		btnBottom8.setToolTipText("");
-		btnBottom8.setHorizontalAlignment(SwingConstants.LEFT);
 		btnBottom8.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnBottom8.setBounds(616, 714, 60, 58);
 		frmView.getContentPane().add(btnBottom8);
@@ -817,7 +769,6 @@ public class View {
 		btnTop1 = new JButton("");
 		btnTop1.setBackground(Color.RED);
 		btnTop1.setToolTipText("");
-		btnTop1.setHorizontalAlignment(SwingConstants.LEFT);
 		btnTop1.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnTop1.setBounds(95, 24, 60, 58);
 		frmView.getContentPane().add(btnTop1);
@@ -831,7 +782,6 @@ public class View {
 		btnTop2 = new JButton("");
 		btnTop2.setBackground(Color.BLUE);
 		btnTop2.setToolTipText("");
-		btnTop2.setHorizontalAlignment(SwingConstants.LEFT);
 		btnTop2.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnTop2.setBounds(153, 24, 60, 58);
 		frmView.getContentPane().add(btnTop2);
@@ -844,7 +794,6 @@ public class View {
 		
 		btnTopRollAgain1 = new JButton("RAgain");
 		btnTopRollAgain1.setToolTipText("");
-		btnTopRollAgain1.setHorizontalAlignment(SwingConstants.LEFT);
 		btnTopRollAgain1.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnTopRollAgain1.setBounds(212, 24, 60, 58);
 		frmView.getContentPane().add(btnTopRollAgain1);
@@ -858,7 +807,6 @@ public class View {
 		btnTop3 = new JButton("");
 		btnTop3.setBackground(Color.RED);
 		btnTop3.setToolTipText("");
-		btnTop3.setHorizontalAlignment(SwingConstants.LEFT);
 		btnTop3.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnTop3.setBounds(270, 24, 60, 58);
 		frmView.getContentPane().add(btnTop3);
@@ -870,7 +818,6 @@ public class View {
 		btnTop4 = new JButton("");
 		btnTop4.setBackground(Color.WHITE);
 		btnTop4.setToolTipText("");
-		btnTop4.setHorizontalAlignment(SwingConstants.LEFT);
 		btnTop4.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnTop4.setBounds(328, 24, 58, 58);
 		frmView.getContentPane().add(btnTop4);
@@ -882,7 +829,6 @@ public class View {
 		btnTop5 = new JButton("");
 		btnTop5.setBackground(Color.GREEN);
 		btnTop5.setToolTipText("");
-		btnTop5.setHorizontalAlignment(SwingConstants.LEFT);
 		btnTop5.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnTop5.setBounds(385, 24, 58, 58);
 		frmView.getContentPane().add(btnTop5);
@@ -894,7 +840,6 @@ public class View {
 		btnTop6 = new JButton("");
 		btnTop6.setBackground(Color.BLUE);
 		btnTop6.setToolTipText("");
-		btnTop6.setHorizontalAlignment(SwingConstants.LEFT);
 		btnTop6.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnTop6.setBounds(442, 24, 58, 58);
 		frmView.getContentPane().add(btnTop6);
@@ -905,7 +850,6 @@ public class View {
 		
 		btnTopRollAgain2 = new JButton("RAgain");
 		btnTopRollAgain2.setToolTipText("");
-		btnTopRollAgain2.setHorizontalAlignment(SwingConstants.LEFT);
 		btnTopRollAgain2.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnTopRollAgain2.setBounds(499, 24, 58, 58);
 		frmView.getContentPane().add(btnTopRollAgain2);
@@ -918,7 +862,6 @@ public class View {
 		btnTop7.setForeground(Color.YELLOW);
 		btnTop7.setBackground(Color.GREEN);
 		btnTop7.setToolTipText("");
-		btnTop7.setHorizontalAlignment(SwingConstants.LEFT);
 		btnTop7.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnTop7.setBounds(556, 24, 60, 58);
 		frmView.getContentPane().add(btnTop7);
@@ -930,7 +873,6 @@ public class View {
 		btnTop8 = new JButton("");
 		btnTop8.setBackground(Color.WHITE);
 		btnTop8.setToolTipText("");
-		btnTop8.setHorizontalAlignment(SwingConstants.LEFT);
 		btnTop8.setFont(new Font("Dialog", Font.PLAIN, 7));
 		btnTop8.setBounds(615, 24, 60, 58);
 		frmView.getContentPane().add(btnTop8);
@@ -938,6 +880,26 @@ public class View {
 		btnTop8.setName("btnTop8");
 		btnTop8.addActionListener(new MoveListener(board, btnTop8,
 				messageTextArea, btnRollDice, textDiceResult, lblResult ));
+		
+		lblPlayer1Name = new JLabel("New label");
+		lblPlayer1Name.setBounds(816, 195, 70, 15);
+		frmView.getContentPane().add(lblPlayer1Name);
+		lblPlayer1Name.setVisible(false);
+		
+		lblPlayer2Name = new JLabel("New label");
+		lblPlayer2Name.setBounds(816, 297, 70, 15);
+		frmView.getContentPane().add(lblPlayer2Name);
+		lblPlayer2Name.setVisible(false);
+		
+		lblPlayer3Name = new JLabel("New label");
+		lblPlayer3Name.setBounds(816, 408, 70, 15);
+		frmView.getContentPane().add(lblPlayer3Name);
+		lblPlayer3Name.setVisible(false);
+		
+		lblPlayer4Name = new JLabel("New label");
+		lblPlayer4Name.setBounds(816, 515, 70, 15);
+		frmView.getContentPane().add(lblPlayer4Name);
+		lblPlayer4Name.setVisible(false);
 		
 	
 		
@@ -969,17 +931,47 @@ public class View {
 				btnBottomRollAgain1, btnBottom3, btnBottom4, btnBottom5,
 				btnBottomRollAgain2, btnBottom6, btnBottom7, btnBottom8, btnTop1,
 				btnTop2, btnTopRollAgain1, btnTop3, btnTop4, btnTop5, btnTop6,
-				btnTopRollAgain2, btnTop7, btnTop8, messageTextArea ));
-
-		
-		
-		
-	
-		
+				btnTopRollAgain2, btnTop7, btnTop8, messageTextArea, 
+				lblPlayer1Name, lblPlayer2Name, lblPlayer3Name, lblPlayer4Name));
 		
 		
 		
 	}
+	
+	
+	public JLabel getLblPlayer1Name() {
+		return lblPlayer1Name;
+	}
+
+	public void setLblPlayer1Name(JLabel lblPlayer1Name) {
+		this.lblPlayer1Name = lblPlayer1Name;
+	}
+
+	public JLabel getLblPlayer2Name() {
+		return lblPlayer2Name;
+	}
+
+	public void setLblPlayer2Name(JLabel lblPlayer2Name) {
+		this.lblPlayer2Name = lblPlayer2Name;
+	}
+
+	public JLabel getLblPlayer3Name() {
+		return lblPlayer3Name;
+	}
+
+	public void setLblPlayer3Name(JLabel lblPlayer3Name) {
+		this.lblPlayer3Name = lblPlayer3Name;
+	}
+
+	public JLabel getLblPlayer4Name() {
+		return lblPlayer4Name;
+	}
+
+	public void setLblPlayer4Name(JLabel lblPlayer4Name) {
+		this.lblPlayer4Name = lblPlayer4Name;
+	}
+
+
 	
 	public JFrame getFrmView() {
 		return frmView;
@@ -1745,6 +1737,11 @@ public class View {
 	private JTextField textPlayer4Piece4;
 	
 	
+	private JLabel lblPlayer1Name;
+	private JLabel lblPlayer2Name;
+	private JLabel lblPlayer3Name;
+	private JLabel lblPlayer4Name;
+	
 
 	
 	private JLabel lblPlaying1;
@@ -1844,4 +1841,5 @@ public class View {
 	
 	
 	private Board board;
+	
 }
