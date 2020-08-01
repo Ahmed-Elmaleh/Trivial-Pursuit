@@ -37,20 +37,28 @@ public class SquareBoard {
 	
 	//search button coordinate x using string name
 	
-		public int searchButtonPos_y(String buttonName) {
-			
-			int pos_y = -1;
-			
-			for(int i = 0; i < BOARD_SIZE; i++) {
-				for(int j = 0; j < BOARD_SIZE; j++) {
-					if(buttonName == squareBoard[i][i].getButton().getName()){
-						pos_y = i;
-					}
+	public int searchButtonPos_y(String buttonName) {
+		
+		int pos_y = -1;
+		
+		for(int i = 0; i < BOARD_SIZE; i++) {
+			for(int j = 0; j < BOARD_SIZE; j++) {
+				if(buttonName == squareBoard[i][i].getButton().getName()){
+					pos_y = i;
 				}
 			}
-			
-			return pos_y;
 		}
+		
+		return pos_y;
+	}
+	
+	//set a button to able
+	public void setButtonToAble(int pos_x, int pos_y) {
+		squareBoard[pos_x][pos_y].getButton().setEnabled(true);
+	}
+		
+		
+	
 	
 	//set all sqaure to unable
 	public void setAllButtonsToUnable() {		

@@ -83,35 +83,35 @@ public class Board{
 	//set player positions
 	public void movePlayerPosition(JButton button, JTextArea messageTextArea) {
 		
-		
-		
-		if(players.getPlayers().get(currentPlayer - 1).isItFistStart()) {
-			
-			players.getPlayers().get(currentPlayer - 1).setItFistStart(false);
-			
-		}else {		
-			
-			int pos_x = players.getPlayers().get(currentPlayer - 1).getPos_x();
-			int pos_y =  players.getPlayers().get(currentPlayer - 1).getPos_y();
-			
-			
-			if(squareBoard.getButtonName(pos_x, pos_y) == "RAgain") {
-				
-				squareBoard.setButtonName(pos_x, pos_y, "RAgain");
-				
-			}else if(squareBoard.getButtonName(pos_x, pos_y) == "WEDGE") {
-				squareBoard.setButtonName(pos_x, pos_y, "WEDGE");
-			}else
-			{
-				squareBoard.setButtonName(pos_x, pos_y, "");
-			}
-					
-			
-		}	
-	
-		button.setText(players.getCurrentPlayerName(currentPlayer));
-		
-		players.storePlayerNewPostion(squareBoard, button, currentPlayer);
+//		
+//		
+//		if(players.getPlayers().get(currentPlayer - 1).isItFistStart()) {
+//			
+//			players.getPlayers().get(currentPlayer - 1).setItFistStart(false);
+//			
+//		}else {		
+//			
+//			int pos_x = players.getPlayers().get(currentPlayer - 1).getPos_x();
+//			int pos_y =  players.getPlayers().get(currentPlayer - 1).getPos_y();
+//			
+//			
+//			if(squareBoard.getButtonName(pos_x, pos_y) == "RAgain") {
+//				
+//				squareBoard.setButtonName(pos_x, pos_y, "RAgain");
+//				
+//			}else if(squareBoard.getButtonName(pos_x, pos_y) == "WEDGE") {
+//				squareBoard.setButtonName(pos_x, pos_y, "WEDGE");
+//			}else
+//			{
+//				squareBoard.setButtonName(pos_x, pos_y, "");
+//			}
+//					
+//			
+//		}	
+//	
+//		button.setText(players.getCurrentPlayerName(currentPlayer));
+//		
+//		players.storePlayerNewPostion(squareBoard, button, currentPlayer);
 		
 		
 	}
@@ -134,9 +134,15 @@ public class Board{
 				possible_Pos_x = diceValue + 5;
 				possible_Pos_y = 11;
 				
-				squareBoard.setButtonToAble(int pos_x, int pos_y);
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
 				
 				possible_Pos_x = 5 - diceValue;
+				possible_Pos_y = 11;
+				
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+				
+				
+				
 				
 			}
 			
