@@ -25,7 +25,7 @@ public class RollDiceListener implements ActionListener{
 			board.excuteDice(textDiceResult);;
 			btnRollDice.setEnabled(false);
 			
-			board.setpossibleMovePosition();
+			board.setPossibleMovePositions();
 			
 			int currentPlayer = board.getCurrentPlayer();
 			

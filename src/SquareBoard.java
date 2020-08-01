@@ -169,20 +169,24 @@ public class SquareBoard {
 		squareBoard[1][5].setButton(btnMidColumn1);
 		squareBoard[2][5].setButton(btnMidColumn2);
 		squareBoard[3][5].setButton(btnMidColumn3);
-		squareBoard[4][2].setButton(btnMidColumn4);
+		squareBoard[4][5].setButton(btnMidColumn4);
+		
 		squareBoard[5][5].setButton(btnCenter);
-		squareBoard[6][5].setButton(btnMidColumn5);
-		squareBoard[7][5].setButton(btnMidColumn6);
-		squareBoard[8][5].setButton(btnMidColumn7);
-		squareBoard[9][5].setButton(btnMidColumn8);
+		squareBoard[6][5].setButton(btnCenter);
+		squareBoard[5][6].setButton(btnCenter);
+		
+		squareBoard[7][5].setButton(btnMidColumn5);
+		squareBoard[8][5].setButton(btnMidColumn6);
+		squareBoard[9][5].setButton(btnMidColumn7);
+		squareBoard[10][5].setButton(btnMidColumn8);
 		squareBoard[5][1].setButton(btnMidRow1);
 		squareBoard[5][2].setButton(btnMidRow2);
 		squareBoard[5][3].setButton(btnMidRow3);
 		squareBoard[5][4].setButton(btnMidRow4);
-		squareBoard[5][6].setButton(btnMidRow5);
-		squareBoard[5][7].setButton(btnMidRow6);
-		squareBoard[5][8].setButton(btnMidRow7);
-		squareBoard[5][9].setButton(btnMidRow8);
+		squareBoard[5][7].setButton(btnMidRow5);
+		squareBoard[5][8].setButton(btnMidRow6);
+		squareBoard[5][9].setButton(btnMidRow7);
+		squareBoard[5][10].setButton(btnMidRow8);
 			
 	}
 	

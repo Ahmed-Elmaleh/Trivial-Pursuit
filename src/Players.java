@@ -13,7 +13,7 @@ public class Players {
 		players.add(player);
 	}
 	
-	public boolean isThisPlayerReadyToGoToCenter(int currentPlayer) {
+	public boolean isAllSlotsInTokenFilled(int currentPlayer) {
 		
 		return (players.get(currentPlayer - 1).isAllSlotsInTokenFilled());
 	}
@@ -84,11 +84,6 @@ public class Players {
 			
 	}
 	
-	//check if current player is out from hub
-	public boolean isThisPlayerOutFromHub(int currentPlayer) {
-		return players.get(currentPlayer - 1).isItFromHub();
-	}
-		
 	
 	
 	

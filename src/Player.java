@@ -1,12 +1,13 @@
 public class Player {
 
 	public Player() {
-		this.isItFromHub = true;
 		this.name = "";
 		this.token = new Token();
 		this.pos_x = -1;
 		this.pos_y = -1;
 	}
+	
+	
 	
 	public boolean isAllSlotsInTokenFilled() {
 		return (token.isAllSlotsFilled());
@@ -28,13 +29,6 @@ public class Player {
 		this.token = token;
 	}
 	
-	public boolean isItFromHub() {
-		return isItFromHub;
-	}
-
-	public void setItFromHub(boolean isItFromHub) {
-		this.isItFromHub = isItFromHub;
-	}
 
 	public int getPos_x() {
 		return pos_x;
@@ -49,8 +43,6 @@ public class Player {
 		this.pos_y = pos_y;
 	}
 	
-
-	private boolean isItFromHub;
 	private String name;
 	private Token token;
 	
