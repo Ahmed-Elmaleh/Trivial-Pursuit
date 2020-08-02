@@ -1,21 +1,28 @@
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 public class Board{
-	
+	private boolean hasAWinner;
+	private Players players;
+	private int currentPlayer;
+	private int numberOfPlayers;
+	private Dice dice;
+	private SquareBoard squareBoard;
+	private QuestionBank placesQuestionBank;
+	private QuestionBank peopleQuestionBank;
+	private QuestionBank eventsQuestionBank;
+	private QuestionBank independenceDayQuestionBank;
+
 	public Board() {
 		this.hasAWinner = false;
 		this.players = new Players();
 		this.currentPlayer = 0;
 		this.dice = new Dice();
 		this.squareBoard = new SquareBoard();
-		this.questionBank = new QuestionBank("fileName");
-		
-		
+		this.placesQuestionBank = new QuestionBank("src/Question_Set/places.csv");
+		this.peopleQuestionBank = new QuestionBank("src/Question_Set/places.csv");
+		this.eventsQuestionBank = new QuestionBank("src/Question_Set/places.csv");
+		this.independenceDayQuestionBank = new QuestionBank("src/Question_Set/places.csv");
+
 	}
 	
 	public Players getPlayers() {
@@ -69,16 +76,16 @@ public class Board{
 		this.hasAWinner = hasAWinner;
 	}
 
-	public QuestionBank getQuestionBank() {
-		return questionBank;
+	public QuestionBank getQuestionBank(String color) {
+		if (color.equals("Blue"))
+			return placesQuestionBank;
+		else if(color.equals("Green"))
+			return independenceDayQuestionBank;
+		else if(color.equals("Red"))
+			return peopleQuestionBank;
+		else
+			return eventsQuestionBank;
 	}
-
-	public void setQuestionBank(QuestionBank questionBank) {
-		this.questionBank = questionBank;
-	}
-	
-	
-	
 	
 	//set player positions
 	public void movePlayerPosition(JButton button, JTextArea messageTextArea) {
@@ -939,19 +946,5 @@ public class Board{
 		
 		
 	}
-		
-	
-
-	private boolean hasAWinner;
-	private Players players;
-	private int currentPlayer;
-	private int numberOfPlayers;
-	private Dice dice;
-	private SquareBoard squareBoard;
-	
-	private QuestionBank questionBank;
-	
-	
-
 }	
 
