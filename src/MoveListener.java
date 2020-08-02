@@ -25,13 +25,26 @@ public class MoveListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		
 		board.showRollDice(btnRollDice, rollDiceLabel, rollDiceResult);
+		
+		board.updateNewPositions(button);
+		
+		board.getSquareBoard().setAllButtonsToUnable();
+		
+		
 
-		board.movePlayerPosition(button, messageTextArea);
+		//board.movePlayerPosition(button, messageTextArea);
+		
+	
 		
 		//board.getSquareBoard().setAllButtonsToUnable();
 	
 		
-		messageTextArea.setVisible(false);
+
+	    int currentPlayer = board.getCurrentPlayer();
+	    
+	    String message = board.getPlayers().getCurrentPlayerName(currentPlayer) + ", Please roll the dice!";
+	    
+	    board.instructions(messageTextArea, message);
 		
 	}
 	

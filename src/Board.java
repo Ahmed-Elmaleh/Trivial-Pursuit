@@ -116,6 +116,20 @@ public class Board{
 		
 	}
 	
+	//update current new location
+	public void updateNewPositions(JButton button) {
+		
+		int newPos_x = squareBoard.searchButtonPos_x(button.getName());
+		int newPos_y = squareBoard.searchButtonPos_y(button.getName());
+		
+		players.setNewPositionX(currentPlayer, newPos_x);
+		players.setNewPositionY(currentPlayer, newPos_y);
+		
+	
+		
+		
+	}
+	
 	//move player position
 	public void setPossibleMovePositions() {
 		
@@ -143,43 +157,170 @@ public class Board{
 			
 		}else if (pos_x == 5) {
 			setAllPossiblePositionsPos_xEqualFive(pos_x,pos_y, diceValue);
+		}else if (pos_x != 5 && pos_y == 5) {
+			 setAllPossiblePositionsPos_yEqualFive(pos_x, pos_y, diceValue);
 		}
 		
 		
 		
 	}
 	
+	//set possible positions pos_y = 5
+	private void setAllPossiblePositionsPos_yEqualFive(int pos_x, int pos_y, int diceValue) {
+		int possible_Pos_x;
+		int possible_Pos_y;
+		
+		if(pos_x + diceValue <= 9 || (pos_x >= 7 && pos_x + diceValue <= 10 )) {
+			possible_Pos_x = pos_x + diceValue;
+			if(pos_x <= 5 && possible_Pos_x >= 6) {
+				possible_Pos_x += 1;
+			}
+			possible_Pos_y = pos_y;
+			squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+			
+		}else {
+			possible_Pos_y = 5 + ((pos_x + diceValue) - 10);
+			possible_Pos_x = 11;
+			squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+			
+			possible_Pos_y = 5 - (((pos_x + diceValue) - 10) - 1);
+			squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+			
+		}
+		
+		if((pos_x - diceValue) >= 1) {
+			possible_Pos_x = pos_x - diceValue;
+			if(pos_x > 6 && possible_Pos_x <= 6) {
+				possible_Pos_x -= 1;
+			}
+			possible_Pos_y = pos_y;
+			squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+		}else {
+			possible_Pos_y = 5 - (diceValue - pos_x);
+			possible_Pos_x = 0;
+			squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+			
+			possible_Pos_y = 5 + ((diceValue - pos_x) + 1);
+			squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+		}
+
+		if(pos_x < 5 && (pos_x + diceValue) >= 6){
+			possible_Pos_y =  5 - ((pos_x + diceValue) - 5);
+			
+			if(possible_Pos_y == 0) {
+				possible_Pos_x = 5;
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+				possible_Pos_x = 6;
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+			}else {
+				possible_Pos_x = 5;
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+			}
+				
+			possible_Pos_y = 6 + ((pos_x + diceValue) - 5);
+			
+			if(possible_Pos_y == 11) {
+				possible_Pos_x = 5;
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+				possible_Pos_x = 6;
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+			}else {
+				possible_Pos_x = 5;
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+			}
+				
+			
+			
+		}
+		
+		if(pos_x > 6 && (pos_x - diceValue) < 6) {
+			
+			possible_Pos_y = (pos_x - diceValue) - 1;
+			if(possible_Pos_y == 0) {
+				possible_Pos_x = 5;
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+				possible_Pos_x = 6;
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+			}else {
+				possible_Pos_x = 5;
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+			}
+			possible_Pos_y = (11 - (pos_x - diceValue)) + 1;
+			
+			if(possible_Pos_y == 11) {
+				possible_Pos_x = 5;
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+				possible_Pos_x = 6;
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+			}else {
+				possible_Pos_x = 5;
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+			}
+			
+		}
+	}
+	
+	//set up default position of all players
+	
+	private void setUpDefaultPositionsOfAllPlayers() {
+//		int pos_x = squareBoard.searchButtonPos_x("CENTER");
+//		int pos_y = squareBoard.searchButtonPos_y("CENTER");
+		
+		players.setDefaultPositionForPlayers(5, 5);
+			
+	}
+	
+	
 	//set possible positions pos_x = 5
 	private void setAllPossiblePositionsPos_xEqualFive(int pos_x, int pos_y, int diceValue) {
 		int possible_Pos_x;
 		int possible_Pos_y;
 		
-		if(pos_y + diceValue <= 10) {
+		if(pos_y + diceValue <= 9 || (pos_y >= 7 && pos_y + diceValue <= 10 )) {
 			possible_Pos_y = pos_y + diceValue;
-			if(possible_Pos_y == 6) {
+			if(pos_y <= 5 && possible_Pos_y >= 6) {
 				possible_Pos_y += 1;
 			}
 			possible_Pos_x = pos_x;
 			squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
 			
 		}else {
-			possible_Pos_x = 5 + ((pos_y + diceValue) - 10);
-			possible_Pos_y = 11;
-			squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
 			
-			possible_Pos_x = 5 - (((pos_y + diceValue) - 10) - 1);
-			squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+			if(pos_y == 5) {
+				possible_Pos_x = 5 + ( 10 - (pos_y + diceValue));
+				possible_Pos_y = 11;
+				
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+				
+				possible_Pos_x = 5 - ((10 - (pos_y + diceValue)) - 1);
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+						
+				
+			}else {
+			
+				possible_Pos_x = 5 + ((pos_y + diceValue) - 10);
+				possible_Pos_y = 11;
+				
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+				
+				possible_Pos_x = 5 - (((pos_y + diceValue) - 10) - 1);
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+			}
+			
 			
 		}
 		
+		
+		
 		if((pos_y - diceValue) >= 1) {
 			possible_Pos_y = pos_y - diceValue;
-			if(possible_Pos_y == 5) {
+			if(pos_y > 6 && possible_Pos_y <= 6) {
 				possible_Pos_y -= 1;
 			}
 			possible_Pos_x = pos_x;
 			squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
 		}else {
+			
 			possible_Pos_x = 5 - (diceValue - pos_y);
 			possible_Pos_y = 0;
 			squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
@@ -187,6 +328,59 @@ public class Board{
 			possible_Pos_x = 5 + ((diceValue - pos_y) + 1);
 			squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
 		}
+		
+		if(pos_y == 5) {
+			if(pos_x + diceValue <= 9 || (pos_x >= 7 && pos_x + diceValue <= 10 )) {
+				possible_Pos_x = pos_x + diceValue;
+				if(pos_x <= 5 && possible_Pos_x >= 6) {
+					possible_Pos_x += 1;
+				}
+				possible_Pos_y = pos_y;
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+				
+			}else {
+				if(pos_x == 5) {
+					possible_Pos_y = 5 + ( 10 - (pos_x + diceValue));
+					possible_Pos_x = 11;
+					
+					squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+					
+					possible_Pos_y = 5 - ((10 - (pos_y + diceValue)) - 1);
+					squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+							
+					
+				}else {
+				
+					possible_Pos_y = 5 + ((pos_x + diceValue) - 10);
+					possible_Pos_x = 11;
+					
+					squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+					
+					possible_Pos_y = 5 - (((pos_x + diceValue) - 10) - 1);
+					squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+				}
+				
+			}
+			
+			if((pos_x - diceValue) >= 1) {
+				possible_Pos_x = pos_x - diceValue;
+				if(pos_x > 6 && possible_Pos_x <= 6) {
+					possible_Pos_x -= 1;
+				}
+				possible_Pos_y = pos_y;
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+			}else {
+				possible_Pos_y = 5 - (diceValue - pos_x);
+				possible_Pos_x = 0;
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+				
+				possible_Pos_y = 5 + ((diceValue - pos_x) + 1);
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+			}
+			
+		}
+
+		
 		
 		if(pos_y < 5 && (pos_y + diceValue) >= 6){
 			possible_Pos_x =  5 - ((pos_y + diceValue) - 5);
@@ -201,7 +395,7 @@ public class Board{
 				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
 			}
 				
-			possible_Pos_x = 5 + ((pos_y + diceValue) - 5);
+			possible_Pos_x = 6 + ((pos_y + diceValue) - 5);
 			
 			if(possible_Pos_x == 11) {
 				possible_Pos_y = 5;
@@ -217,14 +411,35 @@ public class Board{
 			
 		}
 		
-//		if(pos_y > 6 && (pos_y - diceValue) <= 5) {
-//			
-//			possible_Pos_x = 
-//			
-//		}
-//	
+		if(pos_y > 6 && (pos_y - diceValue) < 6) {
+			
+			possible_Pos_x = (pos_y - diceValue) - 1;
+			if(possible_Pos_x == 0) {
+				possible_Pos_y = 5;
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+				possible_Pos_y = 6;
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+			}else {
+				possible_Pos_y = 5;
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+			}
+			possible_Pos_x = (11 - (pos_y - diceValue)) + 1;
+			
+			if(possible_Pos_x == 11) {
+				possible_Pos_y = 5;
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+				possible_Pos_y = 6;
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+			}else {
+				possible_Pos_y = 5;
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+			}
+			
+		}
+	
 		
 	}
+	
 	//set possible positions pos_y = 11
 	private void setAllPossiblePositionsPos_yEqualEleven(int pos_x, int pos_y, int diceValue) {
 		int possible_Pos_x;
@@ -282,15 +497,7 @@ public class Board{
 		}
 		
 	}
-	//set up default position of all players
 	
-	private void setUpDefaultPositionsOfAllPlayers() {
-		int pos_x = squareBoard.searchButtonPos_x("CENTER");
-		int pos_y = squareBoard.searchButtonPos_y("CENTER");
-		
-		players.setDefaultPositionForPlayers(5, 11);
-			
-	}
 	
 	//set possible positions pos_x = 11
 	private void setAllPossiblePositionsPos_xEqualEleven(int pos_x, int pos_y, int diceValue) {
