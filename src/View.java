@@ -223,7 +223,7 @@ public class View {
 		
 		
 		btnWedgeWhite = new JButton("WEDGE");
-		btnWedgeWhite.setName("WEDGE");
+		btnWedgeWhite.setName("wedgeWhite");
 		btnWedgeWhite.setBackground(Color.WHITE);
 		btnWedgeWhite.setBounds(12, 24, 84, 84);
 		frmView.getContentPane().add(btnWedgeWhite);
@@ -249,7 +249,7 @@ public class View {
 		btnWedgeBlue.setBounds(12, 688, 84, 84);
 		frmView.getContentPane().add(btnWedgeBlue);
 		btnWedgeBlue.setEnabled(false);
-		btnWedgeBlue.setName("WEDGE");
+		btnWedgeBlue.setName("wedgeBlue");
 		btnWedgeBlue.addActionListener(new MoveListener(board, btnWedgeBlue,
 				messageTextArea, btnRollDice, textDiceResult, lblResult ));
 		
@@ -258,7 +258,7 @@ public class View {
 		btnWedgeGreen.setBounds(674, 688, 84, 84);
 		frmView.getContentPane().add(btnWedgeGreen);
 		btnWedgeGreen.setEnabled(false);
-		btnWedgeGreen.setName("WEDGE");
+		btnWedgeGreen.setName("wedgeGreen");
 		btnWedgeGreen.addActionListener(new MoveListener(board, btnWedgeGreen,
 				messageTextArea, btnRollDice, textDiceResult, lblResult ));
 		
@@ -345,7 +345,7 @@ public class View {
 		btnWedgeRed.setBounds(674, 24, 84, 84);
 		frmView.getContentPane().add(btnWedgeRed);
 		btnWedgeRed.setEnabled(false);
-		btnWedgeRed.setName("WEDGE");
+		btnWedgeRed.setName("wedgeRed");
 		btnWedgeRed.addActionListener(new MoveListener(board, btnWedgeRed,
 				messageTextArea, btnRollDice, textDiceResult, lblResult ));
 		
@@ -399,7 +399,7 @@ public class View {
 		btnRightRollAgain2.setBounds(700, 395, 58, 60);
 		frmView.getContentPane().add(btnRightRollAgain2);
 		btnRightRollAgain2.setEnabled(false);
-		btnRightRollAgain2.setName("RAgain");
+		btnRightRollAgain2.setName("RAgainRight2");
 		btnRightRollAgain2.addActionListener(new MoveListener(board, btnRightRollAgain2,
 				messageTextArea, btnRollDice, textDiceResult, lblResult ));
 		
@@ -489,7 +489,7 @@ public class View {
 		btnRightRollAgain1.setBounds(700, 162, 58, 58);
 		frmView.getContentPane().add(btnRightRollAgain1);
 		btnRightRollAgain1.setEnabled(false);
-		btnRightRollAgain1.setName("RAgain");
+		btnRightRollAgain1.setName("RAgainRight1");
 		btnRightRollAgain1.addActionListener(new MoveListener(board, btnRightRollAgain1,
 				messageTextArea, btnRollDice, textDiceResult, lblResult ));
 		
@@ -622,7 +622,7 @@ public class View {
 		btnLeftRollAgain1.setBounds(12, 451, 58, 61);
 		frmView.getContentPane().add(btnLeftRollAgain1);
 		btnLeftRollAgain1.setEnabled(false);
-		btnLeftRollAgain1.setName("RAgain");
+		btnLeftRollAgain1.setName("RAgainLeft1");
 		btnLeftRollAgain1.addActionListener(new MoveListener(board, btnLeftRollAgain1,
 				messageTextArea, btnRollDice, textDiceResult, lblResult ));
 		
@@ -654,7 +654,7 @@ public class View {
 		btnLeftRollAgain2.setBounds(12, 628, 58, 60);
 		frmView.getContentPane().add(btnLeftRollAgain2);
 		btnLeftRollAgain2.setEnabled(false);
-		btnLeftRollAgain2.setName("RAgain");
+		btnLeftRollAgain2.setName("RAgainLeft1");
 		btnLeftRollAgain2.addActionListener(new MoveListener(board, btnLeftRollAgain2,
 				messageTextArea, btnRollDice, textDiceResult, lblResult ));
 		
@@ -686,7 +686,7 @@ public class View {
 		btnBottomRollAgain1.setBounds(214, 714, 60, 58);
 		frmView.getContentPane().add(btnBottomRollAgain1);
 		btnBottomRollAgain1.setEnabled(false);
-		btnBottomRollAgain1.setName("RAgain");
+		btnBottomRollAgain1.setName("RAgainBottom1");
 		btnBottomRollAgain1.addActionListener(new MoveListener(board, btnBottomRollAgain1,
 				messageTextArea, btnRollDice, textDiceResult, lblResult ));
 		
@@ -729,7 +729,7 @@ public class View {
 		btnBottomRollAgain2.setBounds(447, 714, 60, 58);
 		frmView.getContentPane().add(btnBottomRollAgain2);
 		btnBottomRollAgain2.setEnabled(false);
-		btnBottomRollAgain2.setName("RAgain");
+		btnBottomRollAgain2.setName("RAgainBottom2");
 		btnBottomRollAgain2.addActionListener(new MoveListener(board, btnBottomRollAgain2,
 				messageTextArea, btnRollDice, textDiceResult, lblResult ));
 		
@@ -798,7 +798,7 @@ public class View {
 		btnTopRollAgain1.setBounds(212, 24, 60, 58);
 		frmView.getContentPane().add(btnTopRollAgain1);
 		btnTopRollAgain1.setEnabled(false);
-		btnTopRollAgain1.setName("RAgain");
+		btnTopRollAgain1.setName("RAgainTop1");
 		btnTopRollAgain1.addActionListener(new MoveListener(board, btnTopRollAgain1,
 				messageTextArea, btnRollDice, textDiceResult, lblResult ));
 		
@@ -854,7 +854,7 @@ public class View {
 		btnTopRollAgain2.setBounds(499, 24, 58, 58);
 		frmView.getContentPane().add(btnTopRollAgain2);
 		btnTopRollAgain2.setEnabled(false);
-		btnTopRollAgain2.setName("RAgain");
+		btnTopRollAgain2.setName("RAgainTop2");
 		btnTopRollAgain2.addActionListener(new MoveListener(board, btnTopRollAgain2,
 				messageTextArea, btnRollDice, textDiceResult, lblResult ));
 		
