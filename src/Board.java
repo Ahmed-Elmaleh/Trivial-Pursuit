@@ -125,10 +125,63 @@ public class Board{
 		players.setNewPositionX(currentPlayer, newPos_x);
 		players.setNewPositionY(currentPlayer, newPos_y);
 		
+		
+	}
 	
+	//update text button
+	public void updateTextForButton(JButton button) {
+		
+		String textButton = button.getText();
+		
+		textButton += Integer.toString(currentPlayer);
+		
+		button.setText(textButton);
 		
 		
 	}
+	
+	//reset text for button
+	public void resetTextForButton() {
+		
+		
+		int pos_x = players.getCurrentPositionX(currentPlayer);
+		int pos_y =  players.getCurrentPositionY(currentPlayer);
+		
+		String buttonName = squareBoard.getButtonName(pos_x, pos_y);
+		String buttonText = squareBoard.getButtonText(pos_x, pos_y);
+		
+		
+		if(buttonText == "")
+		{
+			if(buttonName == "RAgainTop1" || buttonName == "RAgainTop2" || buttonName == "RAgainLeft1" ||
+					buttonName == "RAgainLeft2" || buttonName == "RAgainRight1" || buttonName == "RAgainRight2" ||
+					buttonName == "RAgainBottom1" || buttonName == "RAgainBottom2") {
+				
+				squareBoard.setButtonText(pos_x, pos_y, "RAgain");
+				
+			}else if(buttonName == "wedgeWhite" || buttonName == "wedgeRed" || buttonName == "wedgeBlue"
+					||buttonName == "wedgeGreen") {
+				squareBoard.setButtonText(pos_x, pos_y, "WEDGE");
+				
+			}else if(buttonName == "CENTER"){
+				
+				squareBoard.setButtonText(pos_x, pos_y, "Trivial Purfuit");
+			}
+			else
+			{
+				squareBoard.setButtonText(pos_x, pos_y, "");
+			}
+		}else {
+			
+			buttonText = buttonText.replaceAll(Integer.toString(currentPlayer), "");
+			squareBoard.setButtonText(pos_x, pos_y, buttonText);
+			
+			
+		}
+		
+		
+	}
+	
 	
 	//move player position
 	public void setPossibleMovePositions() {
@@ -680,6 +733,7 @@ public class Board{
 		rollDice.setVisible(true);
 		JLabelResult.setVisible(true);
 		textResult.setVisible(true);
+		textResult.setText("");
 		
 	}
 

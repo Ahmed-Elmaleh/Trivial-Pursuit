@@ -92,6 +92,14 @@ public class SquareBoard {
 		squareBoard[pos_x][pos_y].setButtonName(newName);
 	}
 	
+	//public set button text
+	public void setButtonText(int pos_x, int pos_y, String newText) {
+		squareBoard[pos_x][pos_y].setButtonText(newText);
+	}
+	//get button text
+	public String getButtonText(int pos_x, int pos_y) {
+		return (squareBoard[pos_x][pos_y].getButtonText());
+	}
 	
 	
 	

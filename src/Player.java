@@ -12,8 +12,7 @@ public class Player {
 	public boolean isAllSlotsInTokenFilled() {
 		return (token.isAllSlotsFilled());
 	}
-	
-	
+
 
 	public String getName() {
 		return name;

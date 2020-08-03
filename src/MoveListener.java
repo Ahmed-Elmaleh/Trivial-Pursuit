@@ -26,9 +26,18 @@ public class MoveListener implements ActionListener {
 		
 		board.showRollDice(btnRollDice, rollDiceLabel, rollDiceResult);
 		
+		
+		board.resetTextForButton();
+		
 		board.updateNewPositions(button);
 		
+	
+		
+		board.updateTextForButton(button);
+		
 		board.getSquareBoard().setAllButtonsToUnable();
+		
+			
 		
 		
 

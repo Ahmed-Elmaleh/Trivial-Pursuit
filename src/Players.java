@@ -17,6 +17,10 @@ public class Players {
 		
 		return (players.get(currentPlayer - 1).isAllSlotsInTokenFilled());
 	}
+	//get number of paleyr
+	public String getNumPlayer(int currentPlayer) {
+		return Integer.toString(currentPlayer);
+	}
 	
 	//get current position x
 	public int getCurrentPositionX(int currentPlayer) {
