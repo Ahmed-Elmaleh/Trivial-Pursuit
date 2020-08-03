@@ -1,42 +1,58 @@
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedList;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.IOException;
 
-public class QuestionBank {
+public class QuestionBank
+{
 
-	public QuestionBank(String fileName) {
-		this.questionBank = new HashMap<String, ArrayList<Question>>();
-		this.fileName = fileName;
-		
-		 getAndStoreQuestion();
-	}
-	
-	public String getFileName() {
-		return fileName;
-	}
+    private final  String filePath;
+    private LinkedList<Question> questions;
 
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
-	}
+    public QuestionBank(String filePath)
+    {
+        questions = new LinkedList<Question>();
+        this.filePath = filePath;
+        
+        fillQuestionBank();
+    }
 
-	public HashMap<String, ArrayList<Question>> getQuestionBank() {
-		return questionBank;
-	}
+    //store questions to question bank
+    public void fillQuestionBank()
+    {
+        String line="";
+        try
+        {
+            BufferedReader br = new BufferedReader(new FileReader(this.filePath));
+            while ((line = br.readLine()) != null)
+            {
+                String[] data = line.split(",");
 
-	public void setQuestionBank(HashMap<String, ArrayList<Question>> questionBank) {
-		this.questionBank = questionBank;
-	}
+                String[] answers = {data[1], data[2],data[3],data[4]};
+                Question q = new Question(data[0], answers, data[5]);
+                this.questions.add(q);
+            }
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
 
-	//store question to question bank
-	public void getAndStoreQuestion() {
-		
-	}
-	
-	//getQuestion
-	public String getQuestion(String color) {
-		return "Here is the question";
-	}
-	
-	
-	private String fileName;
-	private HashMap<String, ArrayList<Question>> questionBank;
+    }
+
+    public Question getQuestion() {
+
+        int max = this.questions.size();
+        int min = 0;
+        int range = max - min + 1;
+        int rand = (int)(Math.random() * range) + min;
+
+        return this.questions.get(rand);
+    }
+
 }

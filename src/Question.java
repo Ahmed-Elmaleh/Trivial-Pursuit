@@ -1,7 +1,4 @@
-
 public class Question {
-	
-	private String hello;
 
     private String question;
     private String answers[] = new String[4];
@@ -30,4 +27,3 @@ public class Question {
     }
 
 }
-
