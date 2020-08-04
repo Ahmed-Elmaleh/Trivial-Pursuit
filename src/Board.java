@@ -107,6 +107,46 @@ public class Board{
 		
 	}
 	
+	//get random question
+	public Question getRandomQuestion() {
+		int randomPick = randomNumber(4);
+		Question question = new Question();
+		switch(randomPick) {
+			case 1:
+			{
+				question = getQuestionForColor("Blue");
+			}
+			case 2:
+			{
+				question = getQuestionForColor("White");
+			}
+			case 3:
+			{
+				question = getQuestionForColor("Green");
+			}
+			case 4:
+			{
+				question = getQuestionForColor("Red");
+			}
+		}
+		
+		return question;
+	}
+	
+	//swith player
+	
+	public void switchPlayer() {
+		
+		if(currentPlayer == numberOfPlayers) {
+			currentPlayer = 1;
+		}else {
+			currentPlayer += 1;
+		}
+		
+	}
+	
+	
+	
 
 	//update current new location
 	public void updateNewPositions(JButton button) {
@@ -919,7 +959,7 @@ public class Board{
 				break;
 			}
 		}
-		SelectPlayerToPlayFirst();
+		randomPickPlayerToPlayerFisrt();
 		indicateWhoPlaying(lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4);
 		setUpDefaultPositionsOfAllPlayers();
 		showAllPlayerAtStart(btnCenter);
@@ -943,23 +983,28 @@ public class Board{
 		
 	}
 	
+	//random pick who to play fist
+	public void randomPickPlayerToPlayerFisrt(){
+		currentPlayer = randomNumber(numberOfPlayers);
+	}
+	
 
 	
 
 	//select player to play first
-	private void SelectPlayerToPlayFirst() {
+	private int randomNumber(int number) {
 		
-		int max = numberOfPlayers; 
+		int max = number; 
 	    int min = 1; 
 	    int range = max - min + 1; 
 	  
 	       
-	    currentPlayer = ((int)(Math.random() * range) + min); 
+	    return (int)(Math.random() * range) + min; 
 
 	}
 	
 	//show who is playing
-	private void indicateWhoPlaying(JLabel lblPlaying1, JLabel lblPlaying2, 
+	public void indicateWhoPlaying(JLabel lblPlaying1, JLabel lblPlaying2, 
 			JLabel lblPlaying3, JLabel lblPlaying4) {
 		final int PLAYER1 = 1;
 		final int PLAYER2 = 2;
@@ -970,21 +1015,34 @@ public class Board{
 			case PLAYER1:
 			{
 				lblPlaying1.setVisible(true);
+				
+				lblPlaying2.setVisible(false);
+				lblPlaying3.setVisible(false);
+				lblPlaying4.setVisible(false);
 				break;
 			}
 			case PLAYER2:
 			{
 				lblPlaying2.setVisible(true);
+				lblPlaying1.setVisible(false);
+				lblPlaying3.setVisible(false);
+				lblPlaying4.setVisible(false);
 				break;
 			}
 			case PLAYER3:
 			{
 				lblPlaying3.setVisible(true);
+				lblPlaying2.setVisible(false);
+				lblPlaying1.setVisible(false);
+				lblPlaying4.setVisible(false);
 				break;
 			}
 			case PLAYER4:
 			{
 				lblPlaying4.setVisible(true);
+				lblPlaying2.setVisible(false);
+				lblPlaying3.setVisible(false);
+				lblPlaying1.setVisible(false);
 				break;
 			}
 				
