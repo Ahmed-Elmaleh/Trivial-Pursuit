@@ -31,7 +31,7 @@ public class Board{
 		
 		this.placesQuestionBank = new QuestionBank("src/Question_Set/places.csv");
 		this.peopleQuestionBank = new QuestionBank("src/Question_Set/places.csv");
-		this.eventsQuestionBank = new QuestionBank("src/Question_Set/places.csv");
+		this.eventsQuestionBank = new QuestionBank("src/Question_Set/events.csv");
 		this.independenceDayQuestionBank = new QuestionBank("src/Question_Set/places.csv");
 
 	}
