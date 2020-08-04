@@ -61,7 +61,7 @@ public class Players {
 		String text = "";
 		
 		for(int i = 0; i < players.size(); i++) {
-			text += Integer.toString(i + 1) + " ";
+			text += Integer.toString(i + 1) + "";
 		}
 		
 		btnCenter.setText(text);

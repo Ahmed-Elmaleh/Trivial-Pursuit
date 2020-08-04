@@ -1,4 +1,6 @@
 
+import java.awt.Color;
+
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -13,6 +15,7 @@ public class Board{
 	private int numberOfPlayers;
 	private Dice dice;
 	private SquareBoard squareBoard;
+
 	private QuestionBank placesQuestionBank;
 	private QuestionBank peopleQuestionBank;
 	private QuestionBank eventsQuestionBank;
@@ -24,6 +27,7 @@ public class Board{
 		this.currentPlayer = 0;
 		this.dice = new Dice();
 		this.squareBoard = new SquareBoard();
+		
 		
 		this.placesQuestionBank = new QuestionBank("src/Question_Set/places.csv");
 		this.peopleQuestionBank = new QuestionBank("src/Question_Set/places.csv");
@@ -83,7 +87,7 @@ public class Board{
 		this.hasAWinner = hasAWinner;
 	}
 
-	public QuestionBank getQuestionBank(String color) {
+	private QuestionBank getQuestionBank(String color) {
 		if (color.equals("Blue"))
 			return placesQuestionBank;
 		else if(color.equals("Green"))
@@ -95,21 +99,28 @@ public class Board{
 	}
 	
 	
+	//get question
+	
+	public Question getQuestionForColor(String color) {
+		
+		return getQuestionBank(color).getQuestion();
+		
+	}
+	
+
 	//update current new location
 	public void updateNewPositions(JButton button) {
 		
 		int newPos_x = squareBoard.searchButtonPos_x(button.getName());
 		int newPos_y = squareBoard.searchButtonPos_y(button.getName());
 		
-		if(newPos_x == 6)
+		if(newPos_x == 6 && newPos_y == 5)
 			newPos_x -= 1;
-		if(newPos_y == 6)
+		if(newPos_y == 6 && newPos_x == 5)
 			newPos_y -=1;
 		
 		players.setNewPositionX(currentPlayer, newPos_x);
 		players.setNewPositionY(currentPlayer, newPos_y);
-		
-		
 		
 	}
 	
@@ -142,32 +153,32 @@ public class Board{
 		
 		
 	
-		if(buttonName == "RAgainTop1" || buttonName == "RAgainTop2" || buttonName == "RAgainLeft1" ||
-				buttonName == "RAgainLeft2" || buttonName == "RAgainRight1" || buttonName == "RAgainRight2" ||
-				buttonName == "RAgainBottom1" || buttonName == "RAgainBottom2") {
-			
-			squareBoard.setButtonText(pos_x, pos_y, "RAgain");
-			
-		}else if(buttonName == "wedgeWhite" || buttonName == "wedgeRed" || buttonName == "wedgeBlue"
-				||buttonName == "wedgeGreen") {
-			squareBoard.setButtonText(pos_x, pos_y, "WEDGE");
-			
-		}else if(buttonName == "CENTER"){
-			
-			squareBoard.setButtonText(pos_x, pos_y, "Trivial Purfuit");
+		if(buttonText.equals("1")|| buttonText.equals("2")|| buttonText.equals("3") || buttonText.equals("4") ) {
+			if(buttonName == "RAgainTop1" || buttonName == "RAgainTop2" || buttonName == "RAgainLeft1" ||
+					buttonName == "RAgainLeft2" || buttonName == "RAgainRight1" || buttonName == "RAgainRight2" ||
+					buttonName == "RAgainBottom1" || buttonName == "RAgainBottom2") {
+				
+				squareBoard.setButtonText(pos_x, pos_y, "RAgain");
+				
+			}else if(buttonName == "wedgeWhite" || buttonName == "wedgeRed" || buttonName == "wedgeBlue"
+					||buttonName == "wedgeGreen") {
+				squareBoard.setButtonText(pos_x, pos_y, "WEDGE");
+				
+			}else if(buttonName == "CENTER"){
+				
+				squareBoard.setButtonText(pos_x, pos_y, "Trivial Purfuit");
+			}
+			else
+			{
+				
+				squareBoard.setButtonText(pos_x, pos_y, "");
+				
+			}
+	
+		}else {
+			buttonText = buttonText.replaceAll(Integer.toString(currentPlayer), "");
+			squareBoard.setButtonText(pos_x, pos_y, buttonText);
 		}
-		else
-		{
-			squareBoard.setButtonText(pos_x, pos_y, "");
-		}
-		
-			
-		//buttonText = buttonText.replaceAll(Integer.toString(currentPlayer), "");
-		//squareBoard.setButtonText(pos_x, pos_y, buttonText);
-			
-		
-		
-		
 	}
 	
 	
