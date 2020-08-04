@@ -214,6 +214,7 @@ public class View {
 		
 		
 		btnCenter = new JButton("Trivial Purfuit");
+		btnCenter.setBackground(Color.CYAN);
 		btnCenter.setBounds(295, 310, 180, 176);
 		frmView.getContentPane().add(btnCenter);
 		btnCenter.setEnabled(false);
@@ -654,7 +655,7 @@ public class View {
 		btnLeftRollAgain2.setBounds(12, 628, 58, 60);
 		frmView.getContentPane().add(btnLeftRollAgain2);
 		btnLeftRollAgain2.setEnabled(false);
-		btnLeftRollAgain2.setName("RAgainLeft1");
+		btnLeftRollAgain2.setName("RAgainLeft2");
 		btnLeftRollAgain2.addActionListener(new MoveListener(board, btnLeftRollAgain2,
 				messageTextArea, btnRollDice, textDiceResult, lblResult ));
 		

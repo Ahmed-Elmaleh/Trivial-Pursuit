@@ -47,7 +47,7 @@ public class QuestionBank
 
     public Question getQuestion() {
 
-        int max = this.questions.size();
+        int max = this.questions.size() - 1;
         int min = 0;
         int range = max - min + 1;
         int rand = (int)(Math.random() * range) + min;
