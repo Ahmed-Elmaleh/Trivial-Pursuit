@@ -1,6 +1,4 @@
 
-import java.awt.Color;
-
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -281,12 +279,22 @@ public class Board{
 		}
 		
 		if((pos_x - diceValue) >= 1) {
-			possible_Pos_x = pos_x - diceValue;
-			if(pos_x > 6 && possible_Pos_x <= 6) {
-				possible_Pos_x -= 1;
+			if(pos_x == 7 && diceValue == 6) {
+				possible_Pos_y = 5 - (diceValue - pos_x);
+				possible_Pos_x = 0;
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+				
+				possible_Pos_y = 5 + ((diceValue - pos_x) + 1);
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+			}else {
+			
+				possible_Pos_x = pos_x - diceValue;
+				if(pos_x > 6 && possible_Pos_x <= 6) {
+					possible_Pos_x -= 1;
+				}
+				possible_Pos_y = pos_y;
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
 			}
-			possible_Pos_y = pos_y;
-			squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
 		}else {
 			possible_Pos_y = 5 - (diceValue - pos_x);
 			possible_Pos_x = 0;
@@ -405,12 +413,23 @@ public class Board{
 		
 		
 		if((pos_y - diceValue) >= 1) {
-			possible_Pos_y = pos_y - diceValue;
-			if(pos_y > 6 && possible_Pos_y <= 6) {
-				possible_Pos_y -= 1;
+			
+			if(pos_y == 7 && diceValue == 6) {
+				possible_Pos_x = 5 - (diceValue - pos_y);
+				possible_Pos_y = 0;
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+				
+				possible_Pos_x = 5 + ((diceValue - pos_y) + 1);
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+			}else {
+			
+				possible_Pos_y = pos_y - diceValue;
+				if(pos_y > 6 && possible_Pos_y <= 6) {
+					possible_Pos_y -= 1;
+				}
+				possible_Pos_x = pos_x;
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
 			}
-			possible_Pos_x = pos_x;
-			squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
 		}else {
 			
 			possible_Pos_x = 5 - (diceValue - pos_y);
@@ -560,13 +579,24 @@ public class Board{
 			squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
 		}
 		
-		if(pos_x == 5) {
+		if(pos_x == 5 || pos_x == 6) {
 			possible_Pos_y = 11 - diceValue;
 			if(possible_Pos_y == 5) {
 				possible_Pos_y -= 1;
+				possible_Pos_x = 5;
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+				
+				possible_Pos_x = 4;
+				possible_Pos_y = 5;
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+				
+				possible_Pos_x = 7;
+				possible_Pos_y = 5;
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+			}else {
+				possible_Pos_x = 5;
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
 			}
-			possible_Pos_x = 5;
-			squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
 		}
 		
 		if((pos_x < 5 ) && (pos_x + diceValue) > 5) {
@@ -579,7 +609,7 @@ public class Board{
 			
 		}
 		
-		if((pos_x > 5) && (pos_x - diceValue) <= 5) {
+		if((pos_x > 6) && (pos_x - diceValue) <= 5) {
 			possible_Pos_y = 11 - (diceValue - ((pos_x - 1) - 5));
 			if(possible_Pos_y == 5) {
 				possible_Pos_y -= 1;
@@ -619,13 +649,25 @@ public class Board{
 			squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
 		}
 		
-		if(pos_y == 5) {
+		if(pos_y == 5 || pos_y == 6) {
 			possible_Pos_x = 11 - diceValue;
 			if(possible_Pos_x == 5) {
 				possible_Pos_x -= 1;
+				possible_Pos_y = 5;
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+				
+				possible_Pos_y = 4;
+				possible_Pos_x = 5;
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+				
+				possible_Pos_y = 7;
+				possible_Pos_x = 5;
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+				
+			}else {
+				possible_Pos_y = 5;
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
 			}
-			possible_Pos_y = 5;
-			squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
 		}
 		
 		if((pos_y < 5 ) && (pos_y + diceValue) > 5) {
@@ -638,7 +680,7 @@ public class Board{
 			
 		}
 		
-		if((pos_y > 5) && (pos_y - diceValue) <= 5) {
+		if((pos_y > 6) && (pos_y - diceValue) <= 5) {
 			possible_Pos_x = 11 - (diceValue - ((pos_y - 1) - 5));
 			if(possible_Pos_x == 5) {
 				possible_Pos_x -= 1;
@@ -675,13 +717,24 @@ public class Board{
 			possible_Pos_x = 0;	
 			squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
 		}
-		if(pos_x == 5) {
+		if(pos_x == 5 || pos_x == 6) {
 			possible_Pos_y = diceValue;
-			if(possible_Pos_y == 5) {
-				possible_Pos_y -= 1;
+			if(possible_Pos_y == 6) {
+				possible_Pos_y += 1;
+				possible_Pos_x = 5;
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+				
+				possible_Pos_x = 4;
+				possible_Pos_y = 5;
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+				
+				possible_Pos_x = 7;
+				possible_Pos_y = 5;
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+			}else {
+				possible_Pos_x = 5;
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
 			}
-			possible_Pos_x = 5;
-			squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
 		}
 		
 		if((pos_x < 5 ) &&(pos_x + diceValue) > 5) {
@@ -694,7 +747,7 @@ public class Board{
 			
 		}
 		
-		if((pos_x > 5) && (pos_x - diceValue) <= 5) {
+		if((pos_x > 6) && (pos_x - diceValue) <= 5) {
 			possible_Pos_y = diceValue - ((pos_x - 1) - 5);
 			if(possible_Pos_y == 6) {
 				possible_Pos_y += 1;
@@ -733,13 +786,24 @@ public class Board{
 			squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
 		}
 		
-		if(pos_y == 5) {
+		if(pos_y == 5 || pos_y == 6) {
 			possible_Pos_x = diceValue;
-			if(possible_Pos_x == 5) {
-				possible_Pos_x -= 1;
+			if(possible_Pos_x == 6) {
+				possible_Pos_x += 1;
+				possible_Pos_y = 5;
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+				
+				possible_Pos_y = 4;
+				possible_Pos_x = 5;
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+				
+				possible_Pos_y = 7;
+				possible_Pos_x = 5;
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
+			}else {
+				possible_Pos_y = 5;
+				squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
 			}
-			possible_Pos_y = 5;
-			squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
 		}
 		
 		if((pos_y < 5 ) &&(pos_y + diceValue) > 5) {
@@ -752,7 +816,7 @@ public class Board{
 			
 		}
 		
-		if((pos_y > 5) && (pos_y - diceValue) <= 5) {
+		if((pos_y > 6) && (pos_y - diceValue) <= 5) {
 			possible_Pos_x = diceValue - ((pos_y - 1) - 5);
 			if(possible_Pos_x == 6) {
 				possible_Pos_x += 1;

@@ -37,7 +37,7 @@ public class MoveListener implements ActionListener {
 		
 		String message = "";
 		Color color = button.getBackground();
-		
+		int currentPlayer;
 		Question question = new Question();
 		
 		if(color.toString().equals("javax.swing.plaf.ColorUIResource[r=238,g=238,b=238]")) {
@@ -99,36 +99,47 @@ public class MoveListener implements ActionListener {
 		        "", JOptionPane.QUESTION_MESSAGE, null, selectionValues, initialSelection);
 		    
 		    String answer = (String)selection;
-		   
-		    answer = answer.substring(3);
 		    
-		    if(correctAnswer.equals(answer)){
-	
-			
-				board.resetTextForButton();
-				
-				board.updateNewPositions(button);
-	
-				board.updateTextForButton(button);
-				
-				board.getSquareBoard().setAllButtonsToUnable();
-				
-	
-			    int currentPlayer = board.getCurrentPlayer();
-			    message = board.getPlayers().getCurrentPlayerName(currentPlayer) + ", Please roll the dice!";
+		    if(answer != null) {
+		    
+			    answer = answer.substring(3);
 			    
-			
-		    	
+			    if(correctAnswer.equals(answer)){
+		
+				
+					board.resetTextForButton();
+					
+					board.updateNewPositions(button);
+		
+					board.updateTextForButton(button);
+					
+					board.getSquareBoard().setAllButtonsToUnable();
+					
+					currentPlayer = board.getCurrentPlayer();
+				   
+				    message = "Correct!\n" + board.getPlayers().getCurrentPlayerName(currentPlayer) + ", Please roll the dice!";
+				    
+				
+			    	
+			    }else {
+			    	
+			    	board.switchPlayer();
+			    	board.indicateWhoPlaying(lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4);
+			    	board.getSquareBoard().setAllButtonsToUnable();
+			    	
+			    	currentPlayer = board.getCurrentPlayer();
+				    message = "Sorry, The correct answer is: " + correctAnswer + "\n"
+				    + "Give other player a turn!\n\n" + board.getPlayers().getCurrentPlayerName(currentPlayer)
+				    + ",Please roll the dice!";
+				    
+				   
+			    }
 		    }else {
-		    	
-		    	board.switchPlayer();
-		    	board.indicateWhoPlaying(lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4);
-		    	board.getSquareBoard().setAllButtonsToUnable();
-
-			    message = "Sorry, The correct answer is: " + correctAnswer + "\n" + "Give other player a turn!";
-			    
-			   
+		    	btnRollDice.setEnabled(false);
+		    	currentPlayer = board.getCurrentPlayer();
+		    	message = board.getPlayers().getCurrentPlayerName(currentPlayer) + ", Please move to a possible position!";
 		    }
+		    
 		}
 		
 		 board.instructions(messageTextArea, message);
