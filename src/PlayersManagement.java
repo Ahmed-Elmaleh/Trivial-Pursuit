@@ -2,9 +2,9 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 
-public class Players {
+public class PlayersManagement {
 
-	public Players() {
+	public PlayersManagement() {
 		players = new ArrayList<Player>();
 
 	}
@@ -12,6 +12,17 @@ public class Players {
 	public void addPlayer(Player player) {
 		players.add(player);
 	}
+	
+	
+	public ArrayList<Player> getPlayers() {
+		return players;
+	}
+
+
+	public void setPlayers(ArrayList<Player> players) {
+		this.players = players;
+	}
+
 	
 	public boolean isAllSlotsInTokenFilled(int currentPlayer) {
 		
@@ -90,17 +101,6 @@ public class Players {
 	
 	
 	
-	
-	
-	public ArrayList<Player> getPlayers() {
-		return players;
-	}
-
-
-	public void setPlayers(ArrayList<Player> players) {
-		this.players = players;
-	}
-
 
 	private ArrayList<Player> players;
 }

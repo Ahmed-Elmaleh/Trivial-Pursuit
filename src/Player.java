@@ -1,3 +1,5 @@
+import javax.swing.JTextField;
+
 public class Player {
 
 	public Player() {
@@ -5,12 +7,42 @@ public class Player {
 		this.token = new Token();
 		this.pos_x = -1;
 		this.pos_y = -1;
+		
 	}
 	
 	
 	
 	public boolean isAllSlotsInTokenFilled() {
-		return (token.isAllSlotsFilled());
+		return (token.getBlueSlot() == true && token.getGreenSlot() == true && 
+    			token.getRedSlot() == true && token.getWhiteSlot() == true );
+	}
+	
+	
+	
+	public void updateToken(String color) {
+		if(color == "Blue") {
+			token.setBlueSlot(true);
+			
+		}
+		else if(color == "White") {
+			token.setWhiteSlot(true);
+			
+		}
+		else if(color == "Red") {
+			token.setRedSlot(true);
+			
+		}
+		else if(color == "Green") {
+			token.setGreenSlot(true);		
+		}
+		
+	}
+	
+	public boolean checkIfTokenAdded(String color) {
+		return ((color == "White" && token.getWhiteSlot() == true) ||
+    			(color == "Blue" && token.getBlueSlot() == true) ||
+    			(color == "Green" && token.getGreenSlot() == true) ||
+    			(color == "Red" && token.getRedSlot() == true));
 	}
 
 
@@ -41,6 +73,7 @@ public class Player {
 	public void setPos_y(int pos_y) {
 		this.pos_y = pos_y;
 	}
+
 	
 	private String name;
 	private Token token;

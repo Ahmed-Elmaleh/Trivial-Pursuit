@@ -148,6 +148,8 @@ public class SetUpPlayersListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
+		  String message;
+		
 		try {
 			JDialog.setDefaultLookAndFeelDecorated(true);
 		    Object[] selectionValues = { "1", "2", "3", "4" };
@@ -176,6 +178,9 @@ public class SetUpPlayersListener implements ActionListener {
 					btnTop3,  btnTop4, btnTop5, btnTop6, btnTopRollAgain2,
 					btnTop7, btnTop8);
 		    
+		    
+		  
+		    
 		    board.displayPlayers(lblResult, btnRollDice, textDiceResult,
 		    		btnSetUpPlayers, textPlayer1Piece1,
 					textPlayer1Piece2, textPlayer1Piece3, 
@@ -193,15 +198,15 @@ public class SetUpPlayersListener implements ActionListener {
 		    
 		    int currentPlayer = board.getCurrentPlayer();
 		    
-		    String message = board.getPlayers().getCurrentPlayerName(currentPlayer) + ", Please roll the dice!";
+		   message = board.getPlayersManagement().getCurrentPlayerName(currentPlayer) + ", Please roll the dice!";
 		    
 		    board.instructions(messageTextArea, message);
 		    
 		   		    
 		    
 		}catch(Exception ex) {
-			System.out.println("Please enter number of players!");
-			//ex.printStackTrace();
+			message = "Please enter number of players!";
+			board.instructions(messageTextArea, message);
 		}
 	    
 		

@@ -8,7 +8,7 @@ import javax.swing.JTextField;
 
 public class Board{
 	private boolean hasAWinner;
-	private Players players;
+	private PlayersManagement playersManagement;
 	private int currentPlayer;
 	private int numberOfPlayers;
 	private Dice dice;
@@ -21,7 +21,7 @@ public class Board{
 
 	public Board() {
 		this.hasAWinner = false;
-		this.players = new Players();
+		this.playersManagement = new PlayersManagement();
 		this.currentPlayer = 0;
 		this.dice = new Dice();
 		this.squareBoard = new SquareBoard();
@@ -34,12 +34,12 @@ public class Board{
 
 	}
 	
-	public Players getPlayers() {
-		return players;
+	public PlayersManagement getPlayersManagement() {
+		return playersManagement;
 	}
 
-	public void setPlayers(Players players) {
-		this.players = players;
+	public void setPlayersManagement(PlayersManagement playersManagement) {
+		this.playersManagement = playersManagement;
 	}
 	
 	public int getCurrentPlayer() {
@@ -84,6 +84,15 @@ public class Board{
 	public void setHasWinner(boolean hasAWinner) {
 		this.hasAWinner = hasAWinner;
 	}
+	
+	
+	//update token
+	public void updateToken(int currentPlayer, String color) {
+		
+		playersManagement.getPlayers().get(currentPlayer - 1).updateToken(color);
+		
+	}
+	
 
 	private QuestionBank getQuestionBank(String color) {
 		if (color.equals("Blue"))
@@ -113,25 +122,29 @@ public class Board{
 			case 1:
 			{
 				question = getQuestionForColor("Blue");
+				break;
 			}
 			case 2:
 			{
 				question = getQuestionForColor("White");
+				break;
 			}
 			case 3:
 			{
 				question = getQuestionForColor("Green");
+				break;
 			}
 			case 4:
 			{
 				question = getQuestionForColor("Red");
+				break;
 			}
 		}
 		
 		return question;
 	}
 	
-	//swith player
+	//switch player
 	
 	public void switchPlayer() {
 		
@@ -157,8 +170,8 @@ public class Board{
 		if(newPos_y == 6 && newPos_x == 5)
 			newPos_y -=1;
 		
-		players.setNewPositionX(currentPlayer, newPos_x);
-		players.setNewPositionY(currentPlayer, newPos_y);
+		playersManagement.setNewPositionX(currentPlayer, newPos_x);
+		playersManagement.setNewPositionY(currentPlayer, newPos_y);
 		
 	}
 	
@@ -183,8 +196,8 @@ public class Board{
 	public void resetTextForButton() {
 		
 		
-		int pos_x = players.getCurrentPositionX(currentPlayer);
-		int pos_y =  players.getCurrentPositionY(currentPlayer);
+		int pos_x = playersManagement.getCurrentPositionX(currentPlayer);
+		int pos_y =  playersManagement.getCurrentPositionY(currentPlayer);
 		
 		String buttonName = squareBoard.getButtonName(pos_x, pos_y);
 		String buttonText = squareBoard.getButtonText(pos_x, pos_y);
@@ -224,8 +237,8 @@ public class Board{
 	public void setPossibleMovePositions() {
 		
 		
-		int pos_x = players.getCurrentPositionX(currentPlayer);
-		int pos_y = players.getCurrentPositionY(currentPlayer);
+		int pos_x = playersManagement.getCurrentPositionX(currentPlayer);
+		int pos_y = playersManagement.getCurrentPositionY(currentPlayer);
 		int diceValue = dice.getDiceValue();
 		
 		
@@ -366,7 +379,7 @@ public class Board{
 //		int pos_x = squareBoard.searchButtonPos_x("CENTER");
 //		int pos_y = squareBoard.searchButtonPos_y("CENTER");
 		
-		players.setDefaultPositionForPlayers(5, 5);
+		playersManagement.setDefaultPositionForPlayers(5, 5);
 			
 	}
 	
@@ -868,7 +881,7 @@ public class Board{
 			    String name = (String)selection;
 			    Player player = new Player();
 			    player.setName(name);
-			    players.addPlayer(player);;
+			    playersManagement.addPlayer(player);;
  
 			}catch(Exception e) {
 				e.printStackTrace();
@@ -923,7 +936,7 @@ public class Board{
 				textPlayer1Piece4.setVisible(true);
 
 				
-				lblPlayer1Name.setText(players.getPlayers().get(ONE_PLAYER - 1).getName());
+				lblPlayer1Name.setText(playersManagement.getPlayers().get(ONE_PLAYER - 1).getName());
 				lblPlayer1Name.setVisible(true);
 				lblPlayer1.setVisible(true);
 		
@@ -941,8 +954,8 @@ public class Board{
 				textPlayer2Piece3.setVisible(true);
 				textPlayer2Piece4.setVisible(true);
 				
-				lblPlayer1Name.setText(players.getPlayers().get(ONE_PLAYER - 1).getName());
-				lblPlayer2Name.setText(players.getPlayers().get(TWO_PLAYERS - 1).getName());
+				lblPlayer1Name.setText(playersManagement.getPlayers().get(ONE_PLAYER - 1).getName());
+				lblPlayer2Name.setText(playersManagement.getPlayers().get(TWO_PLAYERS - 1).getName());
 				
 				lblPlayer1Name.setVisible(true);
 				lblPlayer2Name.setVisible(true);
@@ -968,9 +981,9 @@ public class Board{
 				textPlayer3Piece3.setVisible(true);
 				textPlayer3Piece4.setVisible(true);
 				
-				lblPlayer1Name.setText(players.getPlayers().get(ONE_PLAYER - 1).getName());
-				lblPlayer2Name.setText(players.getPlayers().get(TWO_PLAYERS - 1).getName());
-				lblPlayer3Name.setText(players.getPlayers().get(THREE_PLAYERS - 1).getName());
+				lblPlayer1Name.setText(playersManagement.getPlayers().get(ONE_PLAYER - 1).getName());
+				lblPlayer2Name.setText(playersManagement.getPlayers().get(TWO_PLAYERS - 1).getName());
+				lblPlayer3Name.setText(playersManagement.getPlayers().get(THREE_PLAYERS - 1).getName());
 				
 				lblPlayer1Name.setVisible(true);
 				lblPlayer2Name.setVisible(true);
@@ -1005,10 +1018,10 @@ public class Board{
 				textPlayer4Piece4.setVisible(true);
 				
 				
-				lblPlayer1Name.setText(players.getPlayers().get(ONE_PLAYER - 1).getName());
-				lblPlayer2Name.setText(players.getPlayers().get(TWO_PLAYERS - 1).getName());
-				lblPlayer3Name.setText(players.getPlayers().get(THREE_PLAYERS - 1).getName());
-				lblPlayer4Name.setText(players.getPlayers().get(FOUR_PLAYERS - 1).getName());
+				lblPlayer1Name.setText(playersManagement.getPlayers().get(ONE_PLAYER - 1).getName());
+				lblPlayer2Name.setText(playersManagement.getPlayers().get(TWO_PLAYERS - 1).getName());
+				lblPlayer3Name.setText(playersManagement.getPlayers().get(THREE_PLAYERS - 1).getName());
+				lblPlayer4Name.setText(playersManagement.getPlayers().get(FOUR_PLAYERS - 1).getName());
 				
 				
 				lblPlayer1Name.setVisible(true);
@@ -1043,7 +1056,7 @@ public class Board{
 	//Display players on hub
 	private void showAllPlayerAtStart(JButton btnCenter) {
 		
-		players.displayPlayersOnHub(btnCenter);
+		playersManagement.displayPlayersOnHub(btnCenter);
 		
 	}
 	

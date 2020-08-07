@@ -29,7 +29,7 @@ public class RollDiceListener implements ActionListener{
 			
 			int currentPlayer = board.getCurrentPlayer();
 			
-			String message = board.getPlayers().getCurrentPlayerName(currentPlayer) 
+			String message = board.getPlayersManagement().getCurrentPlayerName(currentPlayer) 
 					+ ", Please move to a possible position!";
 			
 			board.instructions(messageTextArea, message);

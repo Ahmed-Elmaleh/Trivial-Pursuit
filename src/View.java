@@ -9,6 +9,8 @@ import javax.swing.SwingConstants;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class View {
 	
@@ -56,6 +58,7 @@ public class View {
 		frmView.getContentPane().add(lblPlayer4);
 		
 		textPlayer1Piece1 = new JTextField();
+		textPlayer1Piece1.setBackground(Color.LIGHT_GRAY);
 		textPlayer1Piece1.setBounds(924, 146, 38, 38);
 		textPlayer1Piece1.setColumns(10);
 		textPlayer1Piece1.setVisible(false);
@@ -63,78 +66,91 @@ public class View {
 	
 		
 		textPlayer1Piece2 = new JTextField();
+		textPlayer1Piece2.setBackground(Color.LIGHT_GRAY);
 		textPlayer1Piece2.setColumns(10);
 		textPlayer1Piece2.setBounds(960, 146, 38, 38);
 		textPlayer1Piece2.setVisible(false);
 		frmView.getContentPane().add(textPlayer1Piece2);
 		
-		textPlayer1Piece3 = new JTextField();
-		textPlayer1Piece3.setColumns(10);
-		textPlayer1Piece3.setBounds(924, 182, 38, 38);
-		textPlayer1Piece3.setVisible(false);
-		frmView.getContentPane().add(textPlayer1Piece3);
-		
 		textPlayer1Piece4 = new JTextField();
+		textPlayer1Piece4.setBackground(Color.LIGHT_GRAY);
 		textPlayer1Piece4.setColumns(10);
-		textPlayer1Piece4.setBounds(960, 182, 38, 38);
+		textPlayer1Piece4.setBounds(924, 182, 38, 38);
 		textPlayer1Piece4.setVisible(false);
 		frmView.getContentPane().add(textPlayer1Piece4);
 		
+		textPlayer1Piece3 = new JTextField();
+		textPlayer1Piece3.setBackground(Color.LIGHT_GRAY);
+		textPlayer1Piece3.setColumns(10);
+		textPlayer1Piece3.setBounds(960, 182, 38, 38);
+		textPlayer1Piece3.setVisible(false);
+		frmView.getContentPane().add(textPlayer1Piece3);
+		
 		textPlayer2Piece1 = new JTextField();
+		textPlayer2Piece1.setBackground(Color.LIGHT_GRAY);
 		textPlayer2Piece1.setColumns(10);
 		textPlayer2Piece1.setBounds(924, 252, 38, 38);
 		textPlayer2Piece1.setVisible(false);
 		frmView.getContentPane().add(textPlayer2Piece1);
 		
 		textPlayer2Piece2 = new JTextField();
+		textPlayer2Piece2.setBackground(Color.LIGHT_GRAY);
 		textPlayer2Piece2.setColumns(10);
 		textPlayer2Piece2.setBounds(960, 252, 38, 38);
 		textPlayer2Piece2.setVisible(false);
 		frmView.getContentPane().add(textPlayer2Piece2);
 		
 		textPlayer2Piece3 = new JTextField();
+		textPlayer2Piece3.setBackground(Color.LIGHT_GRAY);
 		textPlayer2Piece3.setColumns(10);
 		textPlayer2Piece3.setBounds(960, 288, 38, 38);
 		textPlayer2Piece3.setVisible(false);
 		frmView.getContentPane().add(textPlayer2Piece3);
 		
 		textPlayer2Piece4 = new JTextField();
+		textPlayer2Piece4.setBackground(Color.LIGHT_GRAY);
 		textPlayer2Piece4.setColumns(10);
 		textPlayer2Piece4.setBounds(924, 288, 38, 38);
 		textPlayer2Piece4.setVisible(false);
 		frmView.getContentPane().add(textPlayer2Piece4);
 		
 		textPlayer3Piece1 = new JTextField();
+		textPlayer3Piece1.setBackground(Color.LIGHT_GRAY);
 		textPlayer3Piece1.setColumns(10);
 		textPlayer3Piece1.setBounds(924, 368, 38, 38);
 		textPlayer3Piece1.setVisible(false);
 		frmView.getContentPane().add(textPlayer3Piece1);
 		
 		textPlayer3Piece2 = new JTextField();
+		textPlayer3Piece2.setBackground(Color.LIGHT_GRAY);
 		textPlayer3Piece2.setColumns(10);
 		textPlayer3Piece2.setBounds(960, 368, 38, 38);
 		textPlayer3Piece2.setVisible(false);
 		frmView.getContentPane().add(textPlayer3Piece2);
 		
 		textPlayer3Piece3 = new JTextField();
+		textPlayer3Piece3.setBackground(Color.LIGHT_GRAY);
 		textPlayer3Piece3.setColumns(10);
 		textPlayer3Piece3.setBounds(960, 404, 38, 38);
 		textPlayer3Piece3.setVisible(false);
 		frmView.getContentPane().add(textPlayer3Piece3);
 		
 		textPlayer3Piece4 = new JTextField();
+		textPlayer3Piece4.setBackground(Color.LIGHT_GRAY);
 		textPlayer3Piece4.setColumns(10);
 		textPlayer3Piece4.setBounds(924, 404, 38, 38);
 		textPlayer3Piece4.setVisible(false);
 		frmView.getContentPane().add(textPlayer3Piece4);
 		
 		textPlayer4Piece1 = new JTextField();
+		textPlayer4Piece1.setBackground(Color.LIGHT_GRAY);
 		textPlayer4Piece1.setColumns(10);
 		textPlayer4Piece1.setBounds(921, 475, 38, 38);
 		textPlayer4Piece1.setVisible(false);
 		frmView.getContentPane().add(textPlayer4Piece1);
 		
 		textPlayer4Piece2 = new JTextField();
+		textPlayer4Piece2.setBackground(Color.LIGHT_GRAY);
 		textPlayer4Piece2.setColumns(10);
 		textPlayer4Piece2.setBounds(957, 475, 38, 38);
 		textPlayer4Piece2.setVisible(false);
@@ -184,11 +200,21 @@ public class View {
 		messageTextArea.setVisible(false);
 		frmView.getContentPane().add(messageTextArea);
 		
+		btnRestart = new JButton("RESTART GAME");
+		btnRestart.setBounds(809, 25, 184, 58);
+		btnRestart.setVisible(false);
+		frmView.getContentPane().add(btnRestart);
 		
 		btnExitGame = new JButton("EXIT GAME");
+		btnExitGame.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				System.exit(0);
+			}
+		});
 		btnExitGame.setBackground(Color.RED);
 		btnExitGame.setBounds(806, 714, 135, 58);
 		frmView.getContentPane().add(btnExitGame);
+		
 		
 		lblResult = new JLabel("Result:");
 		lblResult.setBounds(816, 94, 70, 15);
@@ -221,7 +247,15 @@ public class View {
 		btnCenter.setName("CENTER");
 		btnCenter.addActionListener(new MoveListener(board, btnCenter,
 				messageTextArea, btnRollDice, textDiceResult, lblResult,
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4, 
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		
 		btnWedgeWhite = new JButton("WEDGE");
@@ -232,7 +266,15 @@ public class View {
 		btnWedgeWhite.setEnabled(false);
 		btnWedgeWhite.addActionListener(new MoveListener(board, btnWedgeWhite,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4, 
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnMidColumn1 = new JButton("");
 		btnMidColumn1.setBackground(Color.GREEN);
@@ -244,7 +286,15 @@ public class View {
 		btnMidColumn1.setName("btnMidColumn1");
 		btnMidColumn1.addActionListener(new MoveListener(board, btnMidColumn1,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		
 		
@@ -256,7 +306,15 @@ public class View {
 		btnWedgeBlue.setName("wedgeBlue");
 		btnWedgeBlue.addActionListener(new MoveListener(board, btnWedgeBlue,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnWedgeGreen = new JButton("WEDGE");
 		btnWedgeGreen.setBackground(Color.GREEN);
@@ -266,7 +324,15 @@ public class View {
 		btnWedgeGreen.setName("wedgeGreen");
 		btnWedgeGreen.addActionListener(new MoveListener(board, btnWedgeGreen,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnMidColumn2 = new JButton("");
 		btnMidColumn2.setBackground(Color.BLUE);
@@ -278,7 +344,15 @@ public class View {
 		btnMidColumn2.setName("btnMidColumn2");
 		btnMidColumn2.addActionListener(new MoveListener(board, btnMidColumn2,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnMidColumn3 = new JButton("");
 		btnMidColumn3.setBackground(Color.RED);
@@ -290,7 +364,15 @@ public class View {
 		btnMidColumn3.setName("btnMidColumn3");
 		btnMidColumn3.addActionListener(new MoveListener(board, btnMidColumn3,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnMidColumn4 = new JButton("");
 		btnMidColumn4.setForeground(new Color(0, 0, 0));
@@ -303,7 +385,15 @@ public class View {
 		btnMidColumn4.setName("btnMidColumn4");
 		btnMidColumn4.addActionListener(new MoveListener(board, btnMidColumn4,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnMidColumn5 = new JButton("");
 		btnMidColumn5.setBackground(Color.RED);
@@ -315,7 +405,15 @@ public class View {
 		btnMidColumn5.setName("btnMidColumn5");
 		btnMidColumn5.addActionListener(new MoveListener(board, btnMidColumn5,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnMidColumn6 = new JButton("");
 		btnMidColumn6.setBackground(Color.GREEN);
@@ -327,7 +425,15 @@ public class View {
 		btnMidColumn6.setName("btnMidColumn6");
 		btnMidColumn6.addActionListener(new MoveListener(board, btnMidColumn6,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnMidColumn7 = new JButton("");
 		btnMidColumn7.setBackground(Color.BLUE);
@@ -339,7 +445,15 @@ public class View {
 		btnMidColumn7.setName("btnMidColumn7");
 		btnMidColumn7.addActionListener(new MoveListener(board, btnMidColumn7,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnMidColumn8 = new JButton("");
 		btnMidColumn8.setBackground(Color.WHITE);
@@ -351,7 +465,15 @@ public class View {
 		btnMidColumn8.setName("btnMidColumn8");
 		btnMidColumn8.addActionListener(new MoveListener(board, btnMidColumn8,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnWedgeRed = new JButton("WEDGE");
 		btnWedgeRed.setBackground(Color.RED);
@@ -361,7 +483,15 @@ public class View {
 		btnWedgeRed.setName("wedgeRed");
 		btnWedgeRed.addActionListener(new MoveListener(board, btnWedgeRed,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnRight8 = new JButton("");
 		btnRight8.setBackground(Color.BLUE);
@@ -373,7 +503,15 @@ public class View {
 		btnRight8.setName("btnRight8");
 		btnRight8.addActionListener(new MoveListener(board, btnRight8,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnRight7 = new JButton("");
 		btnRight7.setBackground(Color.RED);
@@ -385,7 +523,15 @@ public class View {
 		btnRight7.setName("btnRight7");
 		btnRight7.addActionListener(new MoveListener(board, btnRight7,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnRight6 = new JButton("");
 		btnRight6.setBackground(Color.GREEN);
@@ -397,7 +543,15 @@ public class View {
 		btnRight6.setName("btnRight6");
 		btnRight6.addActionListener(new MoveListener(board, btnRight6,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnRight5 = new JButton("");
 		btnRight5.setBackground(Color.WHITE);
@@ -409,7 +563,15 @@ public class View {
 		btnRight5.setName("btnRight5");
 		btnRight5.addActionListener(new MoveListener(board, btnRight5,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnRightRollAgain2 = new JButton("RAgain");
 		btnRightRollAgain2.setToolTipText("");
@@ -420,7 +582,15 @@ public class View {
 		btnRightRollAgain2.setName("RAgainRight2");
 		btnRightRollAgain2.addActionListener(new MoveListener(board, btnRightRollAgain2,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnRight4 = new JButton("");
 		btnRight4.setForeground(Color.YELLOW);
@@ -433,7 +603,15 @@ public class View {
 		btnRight4.setName("btnRight4");
 		btnRight4.addActionListener(new MoveListener(board, btnRight4,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnRight3 = new JButton("");
 		btnRight3.setBackground(Color.RED);
@@ -445,7 +623,15 @@ public class View {
 		btnRight3.setName("btnRight3");
 		btnRight3.addActionListener(new MoveListener(board, btnRight3,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnRight2 = new JButton("");
 		btnRight2.setForeground(Color.YELLOW);
@@ -458,7 +644,15 @@ public class View {
 		btnRight2.setName("btnRight2");
 		btnRight2.addActionListener(new MoveListener(board, btnRight2,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnMidRow5 = new JButton("");
 		btnMidRow5.setBackground(Color.BLUE);
@@ -470,7 +664,15 @@ public class View {
 		btnMidRow5.setName("btnMidRow5");
 		btnMidRow5.addActionListener(new MoveListener(board, btnMidRow5,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnMidRow6 = new JButton("");
 		btnMidRow6.setBackground(Color.GREEN);
@@ -482,7 +684,15 @@ public class View {
 		btnMidRow6.setName("btnMidRow6");
 		btnMidRow6.addActionListener(new MoveListener(board, btnMidRow6,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnMidRow7 = new JButton("");
 		btnMidRow7.setBackground(Color.RED);
@@ -494,7 +704,15 @@ public class View {
 		btnMidRow7.setName("btnMidRow7");
 		btnMidRow7.addActionListener(new MoveListener(board, btnMidRow7,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnMidRow8 = new JButton("");
 		btnMidRow8.setBackground(Color.WHITE);
@@ -507,7 +725,15 @@ public class View {
 		
 		btnMidRow8.addActionListener(new MoveListener(board, btnMidRow8,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnRightRollAgain1 = new JButton("RAgain");
 		btnRightRollAgain1.setToolTipText("");
@@ -518,7 +744,15 @@ public class View {
 		btnRightRollAgain1.setName("RAgainRight1");
 		btnRightRollAgain1.addActionListener(new MoveListener(board, btnRightRollAgain1,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnRight1 = new JButton("");
 		btnRight1.setBackground(Color.GREEN);
@@ -530,7 +764,15 @@ public class View {
 		btnRight1.setName("btnRight1");
 		btnRight1.addActionListener(new MoveListener(board, btnRight1,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnMidRow4 = new JButton("");
 		btnMidRow4.setBackground(Color.GREEN);
@@ -542,7 +784,15 @@ public class View {
 		btnMidRow4.setName("btnMidRow4");
 		btnMidRow4.addActionListener(new MoveListener(board, btnMidRow4,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnMidRow3 = new JButton("");
 		btnMidRow3.setBackground(Color.WHITE);
@@ -554,7 +804,15 @@ public class View {
 		btnMidRow3.setName("btnMidRow3");
 		btnMidRow3.addActionListener(new MoveListener(board, btnMidRow3,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnMidRow2 = new JButton("");
 		btnMidRow2.setBackground(Color.BLUE);
@@ -566,7 +824,15 @@ public class View {
 		btnMidRow2.setName("btnMidRow2");
 		btnMidRow2.addActionListener(new MoveListener(board, btnMidRow2,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnMidRow1 = new JButton("");
 		btnMidRow1.setBackground(Color.RED);
@@ -578,7 +844,15 @@ public class View {
 		btnMidRow1.setName("btnMidRow1");
 		btnMidRow1.addActionListener(new MoveListener(board, btnMidRow1,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnLeft1 = new JButton("");
 		btnLeft1.setBackground(Color.BLUE);
@@ -590,7 +864,15 @@ public class View {
 		btnLeft1.setName("btnLeft1");
 		btnLeft1.addActionListener(new MoveListener(board, btnLeft1,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		
 		btnLeft2 = new JButton("");
@@ -603,7 +885,15 @@ public class View {
 		btnLeft2.setName("btnLeft2");
 		btnLeft2.addActionListener(new MoveListener(board, btnLeft2,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnLeft3 = new JButton("");
 		btnLeft3.setBackground(Color.GREEN);
@@ -615,7 +905,15 @@ public class View {
 		btnLeft3.setName("btnLeft3");
 		btnLeft3.addActionListener(new MoveListener(board, btnLeft3,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnLeft4 = new JButton("");
 		btnLeft4.setBackground(Color.WHITE);
@@ -627,7 +925,15 @@ public class View {
 		btnLeft4.setName("btnLeft4");
 		btnLeft4.addActionListener(new MoveListener(board, btnLeft4,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		
 		btnLeft5 = new JButton("");
@@ -640,7 +946,15 @@ public class View {
 		btnLeft5.setName("btnLeft5");
 		btnLeft5.addActionListener(new MoveListener(board, btnLeft5,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnLeft6 = new JButton("");
 		btnLeft6.setBackground(Color.BLUE);
@@ -652,7 +966,15 @@ public class View {
 		btnLeft6.setName("btnLeft6");
 		btnLeft6.addActionListener(new MoveListener(board, btnLeft6,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnLeftRollAgain1 = new JButton("RAgain");
 		btnLeftRollAgain1.setToolTipText("");
@@ -663,7 +985,15 @@ public class View {
 		btnLeftRollAgain1.setName("RAgainLeft1");
 		btnLeftRollAgain1.addActionListener(new MoveListener(board, btnLeftRollAgain1,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnLeft7 = new JButton("");
 		btnLeft7.setBackground(Color.WHITE);
@@ -675,7 +1005,15 @@ public class View {
 		btnLeft7.setName("btnLeft7");
 		btnLeft7.addActionListener(new MoveListener(board, btnLeft7,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnLeft8 = new JButton("");
 		btnLeft8.setBackground(Color.GREEN);
@@ -687,7 +1025,15 @@ public class View {
 		btnLeft8.setName("btnLeft8");
 		btnLeft8.addActionListener(new MoveListener(board, btnLeft8,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnLeftRollAgain2 = new JButton("RAgain");
 		btnLeftRollAgain2.setToolTipText("");
@@ -698,7 +1044,15 @@ public class View {
 		btnLeftRollAgain2.setName("RAgainLeft2");
 		btnLeftRollAgain2.addActionListener(new MoveListener(board, btnLeftRollAgain2,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnBottom1 = new JButton("");
 		btnBottom1.setBackground(Color.GREEN);
@@ -710,7 +1064,15 @@ public class View {
 		btnBottom1.setName("btnBottom1");
 		btnBottom1.addActionListener(new MoveListener(board, btnBottom1,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnBottom2 = new JButton("");
 		btnBottom2.setBackground(Color.BLUE);
@@ -722,7 +1084,15 @@ public class View {
 		btnBottom2.setName("btnBottom2");
 		btnBottom2.addActionListener(new MoveListener(board, btnBottom2,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnBottomRollAgain1 = new JButton("RAgain");
 		btnBottomRollAgain1.setToolTipText("");
@@ -733,7 +1103,15 @@ public class View {
 		btnBottomRollAgain1.setName("RAgainBottom1");
 		btnBottomRollAgain1.addActionListener(new MoveListener(board, btnBottomRollAgain1,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnBottom3 = new JButton("");
 		btnBottom3.setBackground(Color.WHITE);
@@ -745,7 +1123,15 @@ public class View {
 		btnBottom3.setName("btnBottom3");
 		btnBottom3.addActionListener(new MoveListener(board, btnBottom3,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnBottom4 = new JButton("");
 		btnBottom4.setBackground(Color.RED);
@@ -757,7 +1143,15 @@ public class View {
 		btnBottom4.setName("btnBottom4");
 		btnBottom4.addActionListener(new MoveListener(board, btnBottom4,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnBottom5 = new JButton("");
 		btnBottom5.setBackground(Color.GREEN);
@@ -769,7 +1163,15 @@ public class View {
 		btnBottom5.setName("btnBottom5");
 		btnBottom5.addActionListener(new MoveListener(board, btnBottom5,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnBottomRollAgain2 = new JButton("RAgain");
 		btnBottomRollAgain2.setToolTipText("");
@@ -780,7 +1182,15 @@ public class View {
 		btnBottomRollAgain2.setName("RAgainBottom2");
 		btnBottomRollAgain2.addActionListener(new MoveListener(board, btnBottomRollAgain2,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnBottom6 = new JButton("");
 		btnBottom6.setBackground(Color.RED);
@@ -792,7 +1202,15 @@ public class View {
 		btnBottom6.setName("btnBottom6");
 		btnBottom6.addActionListener(new MoveListener(board, btnBottom6,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnBottom7 = new JButton("");
 		btnBottom7.setBackground(Color.BLUE);
@@ -804,7 +1222,15 @@ public class View {
 		btnBottom7.setName("btnBottom7");
 		btnBottom7.addActionListener(new MoveListener(board, btnBottom7,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnBottom8 = new JButton("");
 		btnBottom8.setBackground(Color.WHITE);
@@ -816,7 +1242,15 @@ public class View {
 		btnBottom8.setName("btnBottom8");
 		btnBottom8.addActionListener(new MoveListener(board, btnBottom8,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnTop1 = new JButton("");
 		btnTop1.setBackground(Color.RED);
@@ -828,7 +1262,15 @@ public class View {
 		btnTop1.setName("btnTop1");
 		btnTop1.addActionListener(new MoveListener(board, btnTop1,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		
 		
@@ -842,7 +1284,15 @@ public class View {
 		btnTop2.setName("btnTop2");
 		btnTop2.addActionListener(new MoveListener(board, btnTop2,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		
 		
@@ -855,7 +1305,15 @@ public class View {
 		btnTopRollAgain1.setName("RAgainTop1");
 		btnTopRollAgain1.addActionListener(new MoveListener(board, btnTopRollAgain1,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		
 		
@@ -869,7 +1327,15 @@ public class View {
 		btnTop3.setName("btnTop3");
 		btnTop3.addActionListener(new MoveListener(board, btnTop3,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnTop4 = new JButton("");
 		btnTop4.setBackground(Color.WHITE);
@@ -881,7 +1347,15 @@ public class View {
 		btnTop4.setName("btnTop4");
 		btnTop4.addActionListener(new MoveListener(board, btnTop4,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnTop5 = new JButton("");
 		btnTop5.setBackground(Color.GREEN);
@@ -893,7 +1367,15 @@ public class View {
 		btnTop5.setName("btnTop5");
 		btnTop5.addActionListener(new MoveListener(board, btnTop5,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnTop6 = new JButton("");
 		btnTop6.setBackground(Color.BLUE);
@@ -905,7 +1387,15 @@ public class View {
 		btnTop6.setName("btnTop6");
 		btnTop6.addActionListener(new MoveListener(board, btnTop6,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnTopRollAgain2 = new JButton("RAgain");
 		btnTopRollAgain2.setToolTipText("");
@@ -916,7 +1406,15 @@ public class View {
 		btnTopRollAgain2.setName("RAgainTop2");
 		btnTopRollAgain2.addActionListener(new MoveListener(board, btnTopRollAgain2,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnTop7 = new JButton("");
 		btnTop7.setForeground(Color.YELLOW);
@@ -929,7 +1427,15 @@ public class View {
 		btnTop7.setName("btnTop7");
 		btnTop7.addActionListener(new MoveListener(board, btnTop7,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		btnTop8 = new JButton("");
 		btnTop8.setBackground(Color.WHITE);
@@ -941,7 +1447,15 @@ public class View {
 		btnTop8.setName("btnTop8");
 		btnTop8.addActionListener(new MoveListener(board, btnTop8,
 				messageTextArea, btnRollDice, textDiceResult, lblResult, 
-				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4));
+				lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4,
+				textPlayer1Piece1, textPlayer1Piece2,
+				textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer2Piece1, textPlayer2Piece2, 
+				textPlayer2Piece3, textPlayer2Piece4, 
+				textPlayer3Piece1, textPlayer3Piece2, 
+				textPlayer3Piece3, textPlayer3Piece4, 
+				textPlayer4Piece1, textPlayer4Piece2,
+				textPlayer4Piece3, textPlayer4Piece4));
 		
 		lblPlayer1Name = new JLabel("New label");
 		lblPlayer1Name.setBounds(816, 195, 70, 15);
@@ -963,7 +1477,7 @@ public class View {
 		frmView.getContentPane().add(lblPlayer4Name);
 		lblPlayer4Name.setVisible(false);
 		
-	
+		
 		
 		
 		
@@ -974,7 +1488,7 @@ public class View {
 		frmView.getContentPane().add(btnSetUpPlayers);
 		btnSetUpPlayers.addActionListener(new SetUpPlayersListener(board, lblResult,  btnRollDice,
 				textDiceResult, btnSetUpPlayers, textPlayer1Piece1, 
-				textPlayer1Piece2, textPlayer1Piece3, textPlayer1Piece4, 
+				textPlayer1Piece2, textPlayer1Piece4, textPlayer1Piece3, 
 				textPlayer2Piece1, textPlayer2Piece2, textPlayer2Piece3, 
 				textPlayer2Piece4, textPlayer3Piece1, textPlayer3Piece2, 
 				textPlayer3Piece3, textPlayer3Piece4, textPlayer4Piece1,
@@ -996,11 +1510,24 @@ public class View {
 				btnTopRollAgain2, btnTop7, btnTop8, messageTextArea, 
 				lblPlayer1Name, lblPlayer2Name, lblPlayer3Name, lblPlayer4Name));
 		
-		
+	
+	
 		
 	}
 	
 	
+	public JButton getBtnRestart() {
+		return btnRestart;
+	}
+
+	public void setBtnRestart(JButton btnRestart) {
+		this.btnRestart = btnRestart;
+	}
+
+	public void setMessageTextArea(JTextArea messageTextArea) {
+		this.messageTextArea = messageTextArea;
+	}
+
 	public JLabel getLblPlayer1Name() {
 		return lblPlayer1Name;
 	}
@@ -1102,19 +1629,19 @@ public class View {
 	}
 
 	public JTextField getTextPlayer1Piece3() {
-		return textPlayer1Piece3;
-	}
-
-	public void setTextPlayer1Piece3(JTextField textPlayer1Piece3) {
-		this.textPlayer1Piece3 = textPlayer1Piece3;
-	}
-
-	public JTextField getTextPlayer1Piece4() {
 		return textPlayer1Piece4;
 	}
 
+	public void setTextPlayer1Piece3(JTextField textPlayer1Piece3) {
+		this.textPlayer1Piece4 = textPlayer1Piece3;
+	}
+
+	public JTextField getTextPlayer1Piece4() {
+		return textPlayer1Piece3;
+	}
+
 	public void setTextPlayer1Piece4(JTextField textPlayer1Piece4) {
-		this.textPlayer1Piece4 = textPlayer1Piece4;
+		this.textPlayer1Piece3 = textPlayer1Piece4;
 	}
 
 	public JTextField getTextPlayer2Piece1() {
@@ -1783,8 +2310,8 @@ public class View {
 
 	private JTextField textPlayer1Piece1;
 	private JTextField textPlayer1Piece2;
-	private JTextField textPlayer1Piece3;
 	private JTextField textPlayer1Piece4;
+	private JTextField textPlayer1Piece3;
 	private JTextField textPlayer2Piece1;
 	private JTextField textPlayer2Piece2;
 	private JTextField textPlayer2Piece3;
@@ -1903,5 +2430,5 @@ public class View {
 	
 	
 	private Board board;
-	
+	private JButton btnRestart;
 }

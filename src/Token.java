@@ -1,3 +1,4 @@
+import javax.swing.JTextField;
 
 public class Token {
 
@@ -5,22 +6,23 @@ public class Token {
     private boolean greenSlot;
     private boolean redSlot;
     private boolean whiteSlot;
+    
+
+
 
     public Token()
     {
-        blueSlot = false;
-        greenSlot = false;
-        redSlot = false;
-        whiteSlot = false;
+        this.blueSlot = false;
+        this.greenSlot = false;
+        this.redSlot = false;
+        this.whiteSlot = false;
+        
+ 
+        
+        
     }
     
-    public boolean isAllSlotsFilled() {
     
-    	return (blueSlot == true && greenSlot == true && 
-    			redSlot == true && whiteSlot == true );
-    }
-    
-
     /********************* SET METHODS ******************/
     public void setBlueSlot(boolean blueSlot)
     {
