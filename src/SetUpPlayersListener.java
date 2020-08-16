@@ -184,7 +184,7 @@ public class SetUpPlayersListener implements ActionListener {
 	}
 	
 	//assign buttons to board[][] type Square
-	public void setUpSqaureBoard() {
+	private void setUpSqaureBoard() {
 		
 		board.getSquareBoard().setSquareButton(0, 0,btnWedgeWhite);		
 		board.getSquareBoard().setSquareButton(0, 1, btnTop1);
