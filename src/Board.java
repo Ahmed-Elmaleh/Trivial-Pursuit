@@ -14,7 +14,7 @@ public class Board{
 	private QuestionBank placesQuestionBank;
 	private QuestionBank peopleQuestionBank;
 	private QuestionBank eventsQuestionBank;
-	private QuestionBank independenceDayQuestionBank;
+	private QuestionBank holidayQuestionBank;
 
 	public Board() {
 		this.hasAWinner = false;
@@ -25,9 +25,9 @@ public class Board{
 		
 		
 		this.placesQuestionBank = new QuestionBank("src/Question_Set/places.csv");
-		this.peopleQuestionBank = new QuestionBank("src/Question_Set/places.csv");
+		this.peopleQuestionBank = new QuestionBank("src/Question_Set/people.csv");
 		this.eventsQuestionBank = new QuestionBank("src/Question_Set/events.csv");
-		this.independenceDayQuestionBank = new QuestionBank("src/Question_Set/places.csv");
+		this.holidayQuestionBank = new QuestionBank("src/Question_Set/holiday.csv");
 
 	}
 	
@@ -98,7 +98,7 @@ public class Board{
 		if (color.equals("Blue"))
 			return placesQuestionBank;
 		else if(color.equals("Green"))
-			return independenceDayQuestionBank;
+			return holidayQuestionBank;
 		else if(color.equals("Red"))
 			return peopleQuestionBank;
 		else
