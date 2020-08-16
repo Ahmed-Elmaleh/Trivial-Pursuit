@@ -1,5 +1,3 @@
-import javax.swing.JTextField;
-
 public class Token {
 
     private boolean blueSlot;

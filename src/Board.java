@@ -1,15 +1,12 @@
-
-import javax.swing.JButton;
-import javax.swing.JDialog;
+import java.util.ArrayList;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
 
 public class Board{
 	private boolean hasAWinner;
-	private PlayersManagement playersManagement;
+	//private PlayersManagement playersManagement;
 	private int currentPlayer;
+	private ArrayList<Player> players;
 	private int numberOfPlayers;
 	private Dice dice;
 	private SquareBoard squareBoard;
@@ -21,7 +18,7 @@ public class Board{
 
 	public Board() {
 		this.hasAWinner = false;
-		this.playersManagement = new PlayersManagement();
+		this.players = new ArrayList<Player>() ;
 		this.currentPlayer = 0;
 		this.dice = new Dice();
 		this.squareBoard = new SquareBoard();
@@ -34,14 +31,17 @@ public class Board{
 
 	}
 	
-	public PlayersManagement getPlayersManagement() {
-		return playersManagement;
+
+	public ArrayList<Player> getPlayers() {
+		return players;
 	}
 
-	public void setPlayersManagement(PlayersManagement playersManagement) {
-		this.playersManagement = playersManagement;
+
+	public void setPlayers(ArrayList<Player> players) {
+		this.players = players;
 	}
-	
+
+
 	public int getCurrentPlayer() {
 		return currentPlayer;
 	}
@@ -89,7 +89,7 @@ public class Board{
 	//update token
 	public void updateToken(int currentPlayer, String color) {
 		
-		playersManagement.getPlayers().get(currentPlayer - 1).updateToken(color);
+		players.get(currentPlayer - 1).updateToken(color);
 		
 	}
 	
@@ -158,87 +158,13 @@ public class Board{
 	
 	
 	
-
-	//update current new location
-	public void updateNewPositions(JButton button) {
-		
-		int newPos_x = squareBoard.searchButtonPos_x(button.getName());
-		int newPos_y = squareBoard.searchButtonPos_y(button.getName());
-		
-		if(newPos_x == 6 && newPos_y == 5)
-			newPos_x -= 1;
-		if(newPos_y == 6 && newPos_x == 5)
-			newPos_y -=1;
-		
-		playersManagement.setNewPositionX(currentPlayer, newPos_x);
-		playersManagement.setNewPositionY(currentPlayer, newPos_y);
-		
-	}
-	
-	//update text button
-	public void updateTextForButton(JButton button) {
-		
-		String textButton = button.getText();
-		if(textButton == "RAgain" || textButton == "WEDGE" ||
-				textButton == "Trivial Purfuit" || textButton == "" ) {
-			textButton = Integer.toString(currentPlayer);
-
-		}else {
-			textButton += Integer.toString(currentPlayer);
-		}
-		
-		button.setText(textButton);
-		
-		
-	}
-	
-	//reset text for button
-	public void resetTextForButton() {
-		
-		
-		int pos_x = playersManagement.getCurrentPositionX(currentPlayer);
-		int pos_y =  playersManagement.getCurrentPositionY(currentPlayer);
-		
-		String buttonName = squareBoard.getButtonName(pos_x, pos_y);
-		String buttonText = squareBoard.getButtonText(pos_x, pos_y);
-		
-		
-	
-		if(buttonText.equals("1")|| buttonText.equals("2")|| buttonText.equals("3") || buttonText.equals("4") ) {
-			if(buttonName == "RAgainTop1" || buttonName == "RAgainTop2" || buttonName == "RAgainLeft1" ||
-					buttonName == "RAgainLeft2" || buttonName == "RAgainRight1" || buttonName == "RAgainRight2" ||
-					buttonName == "RAgainBottom1" || buttonName == "RAgainBottom2") {
-				
-				squareBoard.setButtonText(pos_x, pos_y, "RAgain");
-				
-			}else if(buttonName == "wedgeWhite" || buttonName == "wedgeRed" || buttonName == "wedgeBlue"
-					||buttonName == "wedgeGreen") {
-				squareBoard.setButtonText(pos_x, pos_y, "WEDGE");
-				
-			}else if(buttonName == "CENTER"){
-				
-				squareBoard.setButtonText(pos_x, pos_y, "Trivial Purfuit");
-			}
-			else
-			{
-				
-				squareBoard.setButtonText(pos_x, pos_y, "");
-				
-			}
-	
-		}else {
-			buttonText = buttonText.replaceAll(Integer.toString(currentPlayer), "");
-			squareBoard.setButtonText(pos_x, pos_y, buttonText);
-		}
-	}
-	
 	
 	//move player position
 	public void setPossibleMovePositions() {
 		
 		
-		int pos_x = playersManagement.getCurrentPositionX(currentPlayer);
-		int pos_y = playersManagement.getCurrentPositionY(currentPlayer);
+		int pos_x = players.get(currentPlayer - 1).getPos_x();
+		int pos_y = players.get(currentPlayer - 1).getPos_y();
 		int diceValue = dice.getDiceValue();
 		
 		
@@ -375,11 +301,15 @@ public class Board{
 	
 	//set up default position of all players
 	
-	private void setUpDefaultPositionsOfAllPlayers() {
-//		int pos_x = squareBoard.searchButtonPos_x("CENTER");
-//		int pos_y = squareBoard.searchButtonPos_y("CENTER");
+	public void setUpDefaultPositionsOfAllPlayers() {
+		final int CENTER_POS_X = 5;
+		final int CENTER_POS_Y = 5;
+
 		
-		playersManagement.setDefaultPositionForPlayers(5, 5);
+		for(int i = 0; i < players.size(); i++) {
+			players.get(i).setPos_x(CENTER_POS_X);
+			players.get(i).setPos_y(CENTER_POS_Y);
+		}
 			
 	}
 	
@@ -838,251 +768,9 @@ public class Board{
 			squareBoard.setButtonToAble(possible_Pos_x, possible_Pos_y);
 		}
 	}
-
-	
-	
-	//show roll dice
-	public void showRollDice(JButton rollDice, JLabel JLabelResult, 
-			JTextField textResult) {
-		
-		rollDice.setEnabled(true);
-		rollDice.setVisible(true);
-		JLabelResult.setVisible(true);
-		textResult.setVisible(true);
-		textResult.setText("");
-		
-	}
-
-	//get Dice value
-	public int getDiceValue() {
-		return (dice.getDiceValue());
-	}
-	//roll dice
-	public void rollDice() {
-		dice.rollDice();
-	}
-	
-	//roll dice, set up dice, and show result on board
-	public void excuteDice(JTextField textDiceResult) {
-		dice.rollDice();
-		int diceValue = dice.getDiceValue();
-		textDiceResult.setText(Integer.toString(diceValue));
-	}
-	
-	//get the players' names
-	public void getAndStorePlayersName() {
-
-		
-		for(int i = 0; i < numberOfPlayers; i++) {
-			try {
-				JDialog.setDefaultLookAndFeelDecorated(true);
-			    Object selection = JOptionPane.showInputDialog(null, "What is the player " + (i + 1) + " name?",
-			        "", JOptionPane.QUESTION_MESSAGE, null, null, null);
-			    String name = (String)selection;
-			    Player player = new Player();
-			    player.setName(name);
-			    playersManagement.addPlayer(player);;
- 
-			}catch(Exception e) {
-				e.printStackTrace();
-			}
-			
-		}
-		
-		
-	}
-	
-
-
-	//Display players on the board
-	public void displayPlayers(JLabel lblResult, JButton btnRollDice,
-			JTextField textDiceResult, JButton btnSetUpPlayers,
-			JTextField textPlayer1Piece1, JTextField textPlayer1Piece2,
-			JTextField textPlayer1Piece3, JTextField textPlayer1Piece4,
-			JTextField textPlayer2Piece1, JTextField textPlayer2Piece2,
-			JTextField textPlayer2Piece3,
-			JTextField textPlayer2Piece4, JTextField textPlayer3Piece1, 
-			JTextField textPlayer3Piece2,  JTextField textPlayer3Piece3,
-			JTextField textPlayer3Piece4, JTextField textPlayer4Piece1,
-			JTextField textPlayer4Piece2, JTextField textPlayer4Piece3,
-			JTextField textPlayer4Piece4, JLabel lblPlayer1, JLabel lblPlayer2,
-			JLabel lblPlayer3, JLabel lblPlayer4, JLabel lblPlaying1,
-			JLabel lblPlaying2, JLabel lblPlaying3, JLabel lblPlaying4, 
-			JButton btnCenter, JLabel lblPlayer1Name, JLabel lblPlayer2Name, 
-			JLabel lblPlayer3Name, JLabel lblPlayer4Name) {
-
-	
-	
-	    btnSetUpPlayers.setVisible(false);
-	    
-	    lblResult.setVisible(true);
-	    btnRollDice.setVisible(true);
-	    btnRollDice.setEnabled(true);
-	    textDiceResult.setVisible(true);
-	    
-
-	    final int ONE_PLAYER = 1;
-		final int TWO_PLAYERS = 2;
-		final int THREE_PLAYERS = 3;
-		final int FOUR_PLAYERS = 4;
-		
-		
-		switch (numberOfPlayers) {
-			case ONE_PLAYER:
-			{
-				textPlayer1Piece1.setVisible(true);
-				textPlayer1Piece2.setVisible(true);
-				textPlayer1Piece3.setVisible(true);
-				textPlayer1Piece4.setVisible(true);
-
-				
-				lblPlayer1Name.setText(playersManagement.getPlayers().get(ONE_PLAYER - 1).getName());
-				lblPlayer1Name.setVisible(true);
-				lblPlayer1.setVisible(true);
-		
-				break;
-			}
-			case TWO_PLAYERS:
-			{
-				textPlayer1Piece1.setVisible(true);
-				textPlayer1Piece2.setVisible(true);
-				textPlayer1Piece3.setVisible(true);
-				textPlayer1Piece4.setVisible(true);
-				
-				textPlayer2Piece1.setVisible(true);
-				textPlayer2Piece2.setVisible(true);
-				textPlayer2Piece3.setVisible(true);
-				textPlayer2Piece4.setVisible(true);
-				
-				lblPlayer1Name.setText(playersManagement.getPlayers().get(ONE_PLAYER - 1).getName());
-				lblPlayer2Name.setText(playersManagement.getPlayers().get(TWO_PLAYERS - 1).getName());
-				
-				lblPlayer1Name.setVisible(true);
-				lblPlayer2Name.setVisible(true);
-				lblPlayer1.setVisible(true);
-				lblPlayer2.setVisible(true);
-	
-				break;
-			}
-			case THREE_PLAYERS:
-			{
-				textPlayer1Piece1.setVisible(true);
-				textPlayer1Piece2.setVisible(true);
-				textPlayer1Piece3.setVisible(true);
-				textPlayer1Piece4.setVisible(true);
-				
-				textPlayer2Piece1.setVisible(true);
-				textPlayer2Piece2.setVisible(true);
-				textPlayer2Piece3.setVisible(true);
-				textPlayer2Piece4.setVisible(true);
-				
-				textPlayer3Piece1.setVisible(true);
-				textPlayer3Piece2.setVisible(true);
-				textPlayer3Piece3.setVisible(true);
-				textPlayer3Piece4.setVisible(true);
-				
-				lblPlayer1Name.setText(playersManagement.getPlayers().get(ONE_PLAYER - 1).getName());
-				lblPlayer2Name.setText(playersManagement.getPlayers().get(TWO_PLAYERS - 1).getName());
-				lblPlayer3Name.setText(playersManagement.getPlayers().get(THREE_PLAYERS - 1).getName());
-				
-				lblPlayer1Name.setVisible(true);
-				lblPlayer2Name.setVisible(true);
-				lblPlayer3Name.setVisible(true);
-				lblPlayer1.setVisible(true);
-				lblPlayer2.setVisible(true);
-				lblPlayer3.setVisible(true);
-				
-				
-				break;
-			}
-			case FOUR_PLAYERS:
-			{
-				textPlayer1Piece1.setVisible(true);
-				textPlayer1Piece2.setVisible(true);
-				textPlayer1Piece3.setVisible(true);
-				textPlayer1Piece4.setVisible(true);
-				
-				textPlayer2Piece1.setVisible(true);
-				textPlayer2Piece2.setVisible(true);
-				textPlayer2Piece3.setVisible(true);
-				textPlayer2Piece4.setVisible(true);
-				
-				textPlayer3Piece1.setVisible(true);
-				textPlayer3Piece2.setVisible(true);
-				textPlayer3Piece3.setVisible(true);
-				textPlayer3Piece4.setVisible(true);
-				
-				textPlayer4Piece1.setVisible(true);
-				textPlayer4Piece2.setVisible(true);
-				textPlayer4Piece3.setVisible(true);
-				textPlayer4Piece4.setVisible(true);
-				
-				
-				lblPlayer1Name.setText(playersManagement.getPlayers().get(ONE_PLAYER - 1).getName());
-				lblPlayer2Name.setText(playersManagement.getPlayers().get(TWO_PLAYERS - 1).getName());
-				lblPlayer3Name.setText(playersManagement.getPlayers().get(THREE_PLAYERS - 1).getName());
-				lblPlayer4Name.setText(playersManagement.getPlayers().get(FOUR_PLAYERS - 1).getName());
-				
-				
-				lblPlayer1Name.setVisible(true);
-				lblPlayer2Name.setVisible(true);
-				lblPlayer3Name.setVisible(true);
-				lblPlayer4Name.setVisible(true);
-				lblPlayer1.setVisible(true);
-				lblPlayer2.setVisible(true);
-				lblPlayer3.setVisible(true);
-				lblPlayer4.setVisible(true);
-				
-				break;
-			}
-		}
-		randomPickPlayerToPlayerFisrt();
-		indicateWhoPlaying(lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4);
-		setUpDefaultPositionsOfAllPlayers();
-		showAllPlayerAtStart(btnCenter);
-	}
-	
-
-	
-	//instruction for player
-	public void instructions(JTextArea messageTextArea, String message) {
-		
-		messageTextArea.setText(message);
-		messageTextArea.setVisible(true);
-			
-	}
-	
-	
-	//Display players on hub
-	private void showAllPlayerAtStart(JButton btnCenter) {
-		
-		playersManagement.displayPlayersOnHub(btnCenter);
-		
-	}
-	
-	//random pick who to play fist
-	public void randomPickPlayerToPlayerFisrt(){
-		currentPlayer = randomNumber(numberOfPlayers);
-	}
-	
-
-	
-
-	//select player to play first
-	private int randomNumber(int number) {
-		
-		int max = number; 
-	    int min = 1; 
-	    int range = max - min + 1; 
-	  
-	       
-	    return (int)(Math.random() * range) + min; 
-
-	}
 	
 	//show who is playing
-	public void indicateWhoPlaying(JLabel lblPlaying1, JLabel lblPlaying2, 
-			JLabel lblPlaying3, JLabel lblPlaying4) {
+	public void indicateWhoPlaying(JLabel lblPlaying1, JLabel lblPlaying2, JLabel lblPlaying3,JLabel lblPlaying4) {
 		final int PLAYER1 = 1;
 		final int PLAYER2 = 2;
 		final int PLAYER3 = 3;
@@ -1124,8 +812,43 @@ public class Board{
 			}
 				
 		}
-		
-		
 	}
+
+	
+
+
+	//instruction for player
+	public void instructions(JTextArea messageTextArea, String message) {
+		
+		messageTextArea.setText(message);
+		messageTextArea.setVisible(true);
+			
+	}
+	
+	
+
+	
+	//random pick who to play fist
+	public void randomPickPlayerToPlayerFisrt(){
+		currentPlayer = randomNumber(numberOfPlayers);
+	}
+	
+
+	
+
+	//select player to play first
+	private int randomNumber(int number) {
+		
+		int max = number; 
+	    int min = 1; 
+	    int range = max - min + 1; 
+	  
+	       
+	    return (int)(Math.random() * range) + min; 
+
+	}
+	
+	
+	
 }	
 

@@ -22,14 +22,12 @@ public class RollDiceListener implements ActionListener{
 		
 		try {
 			
-			board.excuteDice(textDiceResult);;
+			excuteDice();
 			btnRollDice.setEnabled(false);
 			
 			board.setPossibleMovePositions();
 			
-			int currentPlayer = board.getCurrentPlayer();
-			
-			String message = board.getPlayersManagement().getCurrentPlayerName(currentPlayer) 
+			String message = board.getPlayers().get(board.getCurrentPlayer() - 1).getName() 
 					+ ", Please move to a possible position!";
 			
 			board.instructions(messageTextArea, message);
@@ -40,6 +38,16 @@ public class RollDiceListener implements ActionListener{
 		
 		
 	}
+	
+	//roll dice, set up dice, and show result on board
+	private void excuteDice() {
+		board.getDice().rollDice();
+		int diceValue = board.getDice().getDiceValue();
+		textDiceResult.setText(Integer.toString(diceValue));
+	}
+
+	
+	
 	
 	private Board board;
 	private JTextField textDiceResult;

@@ -1,5 +1,3 @@
-import javax.swing.JTextField;
-
 public class Player {
 
 	public Player() {

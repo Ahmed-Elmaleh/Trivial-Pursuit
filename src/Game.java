@@ -1,14 +1,7 @@
- 
-
-import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
 import javax.swing.Timer;
 
 
@@ -39,8 +32,7 @@ public class Game implements Runnable {
 				
 		
 					String message = "Game over!\n" +"Congratulations " + 
-							board.getPlayersManagement().
-							getCurrentPlayerName(board.getCurrentPlayer())
+							board.getPlayers().get(board.getCurrentPlayer() - 1).getName()
 							+ ", You are the winner!";
 					
 					board.instructions(view.getMessageTextArea(), message);

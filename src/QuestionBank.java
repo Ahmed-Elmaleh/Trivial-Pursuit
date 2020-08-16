@@ -33,10 +33,12 @@ public class QuestionBank
                 Question q = new Question(data[0], answers, data[5]);
                 this.questions.add(q);
             }
+            br.close();
         }
         catch (FileNotFoundException e)
         {
             e.printStackTrace();
+            
         }
         catch (IOException e)
         {

@@ -10,6 +10,8 @@ import javax.swing.JTextField;
 
 public class SetUpPlayersListener implements ActionListener {
 	
+	
+	
 	public SetUpPlayersListener(Board board, JLabel lblResult, JButton btnRollDice,
 			JTextField textDiceResult, JButton btnSetUpPlayers, 
 			JTextField textPlayer1Piece1, JTextField textPlayer1Piece2,
@@ -158,47 +160,15 @@ public class SetUpPlayersListener implements ActionListener {
 		        "", JOptionPane.QUESTION_MESSAGE, null, selectionValues, initialSelection);
 		    board.setNumberOfPlayers(Integer.parseInt((String)selection));
 		    
-		    board.getAndStorePlayersName();
+		    getAndStorePlayersName();
 		    
-		    board.getSquareBoard().setUpSqaureBoard(btnCenter,
-					btnWedgeWhite, btnMidColumn1, btnWedgeBlue,
-					btnWedgeGreen, btnMidColumn2, btnMidColumn3,
-					btnMidColumn4, btnMidColumn5, btnMidColumn6,
-					btnMidColumn7, btnMidColumn8, btnWedgeRed,
-					btnRight8, btnRight7, btnRight6, btnRight5,
-					btnRightRollAgain2, btnRight4, btnRight3,
-					btnRight2, btnMidRow5, btnMidRow6, btnMidRow7,
-					btnMidRow8, btnRightRollAgain1, btnRight1, btnMidRow4,
-					btnMidRow3, btnMidRow2, btnMidRow1, btnLeft1, 
-					btnLeft2, btnLeft3,btnLeft4, btnLeft5, btnLeft6,
-					btnLeftRollAgain1,  btnLeft7, btnLeft8,  btnLeftRollAgain2,
-					btnBottom1, btnBottom2, btnBottomRollAgain1, btnBottom3,
-					btnBottom4, btnBottom5,btnBottomRollAgain2, btnBottom6,
-					btnBottom7, btnBottom8, btnTop1, btnTop2, btnTopRollAgain1,
-					btnTop3,  btnTop4, btnTop5, btnTop6, btnTopRollAgain2,
-					btnTop7, btnTop8);
+		    setUpSqaureBoard();
+	  
+		    displayPlayers();
+		    	    
 		    
 		    
-		  
-		    
-		    board.displayPlayers(lblResult, btnRollDice, textDiceResult,
-		    		btnSetUpPlayers, textPlayer1Piece1,
-					textPlayer1Piece2, textPlayer1Piece3, 
-					textPlayer1Piece4, textPlayer2Piece1, 
-					textPlayer2Piece2, textPlayer2Piece3,
-					textPlayer2Piece4, textPlayer3Piece1, 
-					textPlayer3Piece2, textPlayer3Piece3,
-					textPlayer3Piece4, textPlayer4Piece1,
-					textPlayer4Piece2, textPlayer4Piece3,
-					textPlayer4Piece4, lblPlayer1, lblPlayer2,
-					lblPlayer3, lblPlayer4, lblPlaying1,
-					lblPlaying2, lblPlaying3, lblPlaying4, btnCenter, 
-					lblPlayer1Name, lblPlayer2Name, lblPlayer3Name, lblPlayer4Name);
-		    
-		    
-		    int currentPlayer = board.getCurrentPlayer();
-		    
-		   message = board.getPlayersManagement().getCurrentPlayerName(currentPlayer) + ", Please roll the dice!";
+		    message = board.getPlayers().get(board.getCurrentPlayer() - 1).getName() + ", Please roll the dice!";
 		    
 		    board.instructions(messageTextArea, message);
 		    
@@ -212,6 +182,253 @@ public class SetUpPlayersListener implements ActionListener {
 		
 		
 	}
+	
+	//assign buttons to board[][] type Square
+	public void setUpSqaureBoard() {
+		
+		board.getSquareBoard().setSquareButton(0, 0,btnWedgeWhite);		
+		board.getSquareBoard().setSquareButton(0, 1, btnTop1);
+		board.getSquareBoard().setSquareButton(0, 2, btnTop2);
+		board.getSquareBoard().setSquareButton(0, 3, btnTopRollAgain1);
+		board.getSquareBoard().setSquareButton(0, 4, btnTop3);
+		board.getSquareBoard().setSquareButton(0, 5, btnTop4);
+		board.getSquareBoard().setSquareButton(0, 6, btnTop5);
+		board.getSquareBoard().setSquareButton(0, 7, btnTop6);
+		board.getSquareBoard().setSquareButton(0, 8, btnTopRollAgain2);
+		board.getSquareBoard().setSquareButton(0, 9, btnTop7);
+		board.getSquareBoard().setSquareButton(0, 10, btnTop8);
+		board.getSquareBoard().setSquareButton(0, 11, btnWedgeRed);
+		board.getSquareBoard().setSquareButton(1, 0, btnLeft1);
+		board.getSquareBoard().setSquareButton(2, 0, btnLeft2);
+		board.getSquareBoard().setSquareButton(3, 0, btnLeft3);
+		board.getSquareBoard().setSquareButton(4, 0, btnLeft4);
+		board.getSquareBoard().setSquareButton(5, 0, btnLeft5);
+		board.getSquareBoard().setSquareButton(6, 0, btnLeft6);
+		board.getSquareBoard().setSquareButton(7, 0, btnLeftRollAgain1);
+		board.getSquareBoard().setSquareButton(8, 0, btnLeft7);
+		board.getSquareBoard().setSquareButton(9, 0, btnLeft8);
+		board.getSquareBoard().setSquareButton(10, 0, btnLeftRollAgain2);
+		board.getSquareBoard().setSquareButton(11, 0, btnWedgeBlue);
+		board.getSquareBoard().setSquareButton(11, 1, btnBottom1);
+		board.getSquareBoard().setSquareButton(11, 2, btnBottom2);
+		board.getSquareBoard().setSquareButton(11, 3, btnBottomRollAgain1);
+		board.getSquareBoard().setSquareButton(11, 4, btnBottom3);
+		board.getSquareBoard().setSquareButton(11, 5, btnBottom4);
+		board.getSquareBoard().setSquareButton(11, 6, btnBottom5);
+		board.getSquareBoard().setSquareButton(11, 7, btnBottomRollAgain2);
+		board.getSquareBoard().setSquareButton(11, 8, btnBottom6);
+		board.getSquareBoard().setSquareButton(11, 9, btnBottom7);
+		board.getSquareBoard().setSquareButton(11, 10, btnBottom8);
+		board.getSquareBoard().setSquareButton(11, 11, btnWedgeGreen);
+		board.getSquareBoard().setSquareButton(1, 11, btnRight1);
+		board.getSquareBoard().setSquareButton(2, 11, btnRightRollAgain1);
+		board.getSquareBoard().setSquareButton(3, 11, btnRight2);
+		board.getSquareBoard().setSquareButton(4, 11, btnRight3);
+		board.getSquareBoard().setSquareButton(5, 11, btnRight4);
+		board.getSquareBoard().setSquareButton(6, 11, btnRightRollAgain2);
+		board.getSquareBoard().setSquareButton(7, 11, btnRight5);
+		board.getSquareBoard().setSquareButton(8, 11, btnRight6);
+		board.getSquareBoard().setSquareButton(9, 11, btnRight7);
+		board.getSquareBoard().setSquareButton(10, 11, btnRight8);
+		board.getSquareBoard().setSquareButton(1, 5, btnMidColumn1);
+		board.getSquareBoard().setSquareButton(2, 5, btnMidColumn2);
+		board.getSquareBoard().setSquareButton(3, 5, btnMidColumn3);
+		board.getSquareBoard().setSquareButton(4, 5, btnMidColumn4);
+		
+		board.getSquareBoard().setSquareButton(5, 5, btnCenter);
+		board.getSquareBoard().setSquareButton(6, 5, btnCenter);
+		board.getSquareBoard().setSquareButton(5, 6, btnCenter);
+		
+		board.getSquareBoard().setSquareButton(7, 5, btnMidColumn5);
+		board.getSquareBoard().setSquareButton(8, 5, btnMidColumn6);
+		board.getSquareBoard().setSquareButton(9, 5, btnMidColumn7);
+		board.getSquareBoard().setSquareButton(10, 5, btnMidColumn8);
+		
+		board.getSquareBoard().setSquareButton(5, 1, btnMidRow1);
+		board.getSquareBoard().setSquareButton(5, 2, btnMidRow2);
+		board.getSquareBoard().setSquareButton(5, 3, btnMidRow3);
+		board.getSquareBoard().setSquareButton(5, 4, btnMidRow4);
+		board.getSquareBoard().setSquareButton(5, 7, btnMidRow5);
+		board.getSquareBoard().setSquareButton(5, 8, btnMidRow6);
+		board.getSquareBoard().setSquareButton(5, 9, btnMidRow7);
+		board.getSquareBoard().setSquareButton(5, 10, btnMidRow8);
+		
+
+	}
+	
+	//Display players on the board
+	private void displayPlayers() {
+
+		int numberOfPlayers = board.getPlayers().size();
+	
+	    btnSetUpPlayers.setVisible(false);
+	    
+	    lblResult.setVisible(true);
+	    btnRollDice.setVisible(true);
+	    btnRollDice.setEnabled(true);
+	    textDiceResult.setVisible(true);
+	    
+
+	    final int ONE_PLAYER = 1;
+		final int TWO_PLAYERS = 2;
+		final int THREE_PLAYERS = 3;
+		final int FOUR_PLAYERS = 4;
+		
+		
+		switch (numberOfPlayers) {
+			case ONE_PLAYER:
+			{
+				textPlayer1Piece1.setVisible(true);
+				textPlayer1Piece2.setVisible(true);
+				textPlayer1Piece3.setVisible(true);
+				textPlayer1Piece4.setVisible(true);
+
+				
+				lblPlayer1Name.setText(board.getPlayers().get(ONE_PLAYER - 1).getName());
+				lblPlayer1Name.setVisible(true);
+				lblPlayer1.setVisible(true);
+		
+				break;
+			}
+			case TWO_PLAYERS:
+			{
+				textPlayer1Piece1.setVisible(true);
+				textPlayer1Piece2.setVisible(true);
+				textPlayer1Piece3.setVisible(true);
+				textPlayer1Piece4.setVisible(true);
+				
+				textPlayer2Piece1.setVisible(true);
+				textPlayer2Piece2.setVisible(true);
+				textPlayer2Piece3.setVisible(true);
+				textPlayer2Piece4.setVisible(true);
+				
+				lblPlayer1Name.setText(board.getPlayers().get(ONE_PLAYER - 1).getName());
+				lblPlayer2Name.setText(board.getPlayers().get(TWO_PLAYERS - 1).getName());
+				
+				lblPlayer1Name.setVisible(true);
+				lblPlayer2Name.setVisible(true);
+				lblPlayer1.setVisible(true);
+				lblPlayer2.setVisible(true);
+	
+				break;
+			}
+			case THREE_PLAYERS:
+			{
+				textPlayer1Piece1.setVisible(true);
+				textPlayer1Piece2.setVisible(true);
+				textPlayer1Piece3.setVisible(true);
+				textPlayer1Piece4.setVisible(true);
+				
+				textPlayer2Piece1.setVisible(true);
+				textPlayer2Piece2.setVisible(true);
+				textPlayer2Piece3.setVisible(true);
+				textPlayer2Piece4.setVisible(true);
+				
+				textPlayer3Piece1.setVisible(true);
+				textPlayer3Piece2.setVisible(true);
+				textPlayer3Piece3.setVisible(true);
+				textPlayer3Piece4.setVisible(true);
+				
+				lblPlayer1Name.setText(board.getPlayers().get(ONE_PLAYER - 1).getName());
+				lblPlayer2Name.setText(board.getPlayers().get(TWO_PLAYERS - 1).getName());
+				lblPlayer3Name.setText(board.getPlayers().get(THREE_PLAYERS - 1).getName());
+				
+				lblPlayer1Name.setVisible(true);
+				lblPlayer2Name.setVisible(true);
+				lblPlayer3Name.setVisible(true);
+				lblPlayer1.setVisible(true);
+				lblPlayer2.setVisible(true);
+				lblPlayer3.setVisible(true);
+				
+				
+				break;
+			}
+			case FOUR_PLAYERS:
+			{
+				textPlayer1Piece1.setVisible(true);
+				textPlayer1Piece2.setVisible(true);
+				textPlayer1Piece3.setVisible(true);
+				textPlayer1Piece4.setVisible(true);
+				
+				textPlayer2Piece1.setVisible(true);
+				textPlayer2Piece2.setVisible(true);
+				textPlayer2Piece3.setVisible(true);
+				textPlayer2Piece4.setVisible(true);
+				
+				textPlayer3Piece1.setVisible(true);
+				textPlayer3Piece2.setVisible(true);
+				textPlayer3Piece3.setVisible(true);
+				textPlayer3Piece4.setVisible(true);
+				
+				textPlayer4Piece1.setVisible(true);
+				textPlayer4Piece2.setVisible(true);
+				textPlayer4Piece3.setVisible(true);
+				textPlayer4Piece4.setVisible(true);
+				
+				
+				lblPlayer1Name.setText(board.getPlayers().get(ONE_PLAYER - 1).getName());
+				lblPlayer2Name.setText(board.getPlayers().get(TWO_PLAYERS - 1).getName());
+				lblPlayer3Name.setText(board.getPlayers().get(THREE_PLAYERS - 1).getName());
+				lblPlayer4Name.setText(board.getPlayers().get(FOUR_PLAYERS - 1).getName());
+				
+				
+				lblPlayer1Name.setVisible(true);
+				lblPlayer2Name.setVisible(true);
+				lblPlayer3Name.setVisible(true);
+				lblPlayer4Name.setVisible(true);
+				lblPlayer1.setVisible(true);
+				lblPlayer2.setVisible(true);
+				lblPlayer3.setVisible(true);
+				lblPlayer4.setVisible(true);
+				
+				break;
+			}
+		}
+		board.randomPickPlayerToPlayerFisrt();
+		board.indicateWhoPlaying(lblPlaying1, lblPlaying2, lblPlaying3, lblPlaying4);
+		board.setUpDefaultPositionsOfAllPlayers();
+		showAllPlayerAtStart();
+	}
+	
+	
+	//Display players on hub
+	private void showAllPlayerAtStart() {
+		
+		String text = "";
+		
+		for(int i = 0; i < board.getPlayers().size(); i++) {
+			text += Integer.toString(i + 1) + "";
+		}
+		
+		btnCenter.setText(text);
+		
+	}
+	
+	//get the players' names
+	private void getAndStorePlayersName() {
+		
+		int numberOfPlayers = board.getNumberOfPlayers();
+		
+		for(int i = 0; i < numberOfPlayers; i++) {
+			try {
+				JDialog.setDefaultLookAndFeelDecorated(true);
+			    Object selection = JOptionPane.showInputDialog(null, "What is the player " + (i + 1) + " name?",
+			        "", JOptionPane.QUESTION_MESSAGE, null, null, null);
+			    String name = (String)selection;
+			    Player player = new Player();
+			    player.setName(name);
+			    board.getPlayers().add(player);;
+ 
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+		
+	}
+
+	
 	
 	private JTextArea messageTextArea;
 	
@@ -318,4 +535,5 @@ public class SetUpPlayersListener implements ActionListener {
 	
 	
 	private Board board;
+	
 }

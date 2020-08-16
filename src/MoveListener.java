@@ -57,25 +57,26 @@ public class MoveListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		board.showRollDice(btnRollDice, rollDiceLabel, rollDiceResult);
 		
 		String message = "";
 		Color color = button.getBackground();
 		int currentPlayer;
 		Question question = new Question();
 		
+		showRollDice();
+		
 		if(color.toString().equals("javax.swing.plaf.ColorUIResource[r=238,g=238,b=238]")) {
 			
 
-			board.resetTextForButton();
+			resetTextForButton();
 			
-			board.updateNewPositions(button);
+			updateNewPositions();
 
-			board.updateTextForButton(button);
+			updateTextForButton();
 			
 			board.getSquareBoard().setAllButtonsToUnable();
 			
-			message = "Please roll the dice again!";
+			message =  board.getPlayers().get(board.getCurrentPlayer() - 1).getName() + ", Please roll the dice again!";
 			
 			
 		}else {
@@ -132,17 +133,17 @@ public class MoveListener implements ActionListener {
 		
 			    	currentPlayer = board.getCurrentPlayer();
 			    	
-					board.resetTextForButton();
+			    	resetTextForButton();
 					
-					board.updateNewPositions(button);
-		
-					board.updateTextForButton(button);
+					updateNewPositions();
+
+					updateTextForButton();
 					
 					board.getSquareBoard().setAllButtonsToUnable();
 					
 					if(button.getName() == "wedgeWhite") {
 						
-						if(!board.getPlayersManagement().getPlayers().get(currentPlayer -1).checkIfTokenAdded("White")) {
+						if(!board.getPlayers().get(currentPlayer -1).checkIfTokenAdded("White")) {
 							board.updateToken(currentPlayer, "White");
 							updateDisplayToken(currentPlayer, "White");
 							
@@ -150,21 +151,21 @@ public class MoveListener implements ActionListener {
 						
 					}
 					if(button.getName() == "wedgeRed") {
-						if(!board.getPlayersManagement().getPlayers().get(currentPlayer -1).checkIfTokenAdded("Red")) {
+						if(!board.getPlayers().get(currentPlayer -1).checkIfTokenAdded("Red")) {
 							board.updateToken(currentPlayer, "Red");
 							updateDisplayToken(currentPlayer, "Red");
 						}
 						
 					}
 					if (button.getName() == "wedgeBlue") {
-						if(!board.getPlayersManagement().getPlayers().get(currentPlayer -1).checkIfTokenAdded("Blue")) {
+						if(!board.getPlayers().get(currentPlayer -1).checkIfTokenAdded("Blue")) {
 							board.updateToken(currentPlayer, "Blue");
 							updateDisplayToken(currentPlayer, "Blue");
 						}
 						
 					}
 					if(button.getName() == "wedgeGreen") {
-						if(!board.getPlayersManagement().getPlayers().get(currentPlayer - 1).checkIfTokenAdded("Green")) {
+						if(!board.getPlayers().get(currentPlayer - 1).checkIfTokenAdded("Green")) {
 							board.updateToken(currentPlayer, "Green");
 							updateDisplayToken(currentPlayer, "Green");
 						}
@@ -172,13 +173,13 @@ public class MoveListener implements ActionListener {
 					}	
 					
 					if(button.getName() == "CENTER") {
-						if(board.getPlayersManagement().getPlayers().get(currentPlayer -1).isAllSlotsInTokenFilled()) {
+						if(board.getPlayers().get(currentPlayer -1).isAllSlotsInTokenFilled()) {
 							board.setHasWinner(true);
 						}
 							
 					}
 				   
-				    message = "Correct!\n" + board.getPlayersManagement().getCurrentPlayerName(currentPlayer) + ", Please roll the dice!";
+				    message = "Correct!\n" + board.getPlayers().get(board.getCurrentPlayer() - 1).getName() + ", Please roll the dice!";
 				    
 				
 			    	
@@ -190,7 +191,7 @@ public class MoveListener implements ActionListener {
 			    	
 			    	currentPlayer = board.getCurrentPlayer();
 				    message = "Sorry, The correct answer is: " + correctAnswer + "\n"
-				    + "Give other player a turn!\n\n" + board.getPlayersManagement().getCurrentPlayerName(currentPlayer)
+				    + "Give other player a turn!\n\n" + board.getPlayers().get(board.getCurrentPlayer() - 1).getName()
 				    + ",Please roll the dice!";
 				    
 				   
@@ -198,7 +199,7 @@ public class MoveListener implements ActionListener {
 		    }else {
 		    	btnRollDice.setEnabled(false);
 		    	currentPlayer = board.getCurrentPlayer();
-		    	message = board.getPlayersManagement().getCurrentPlayerName(currentPlayer) + ", Please move to a possible position!";
+		    	message = board.getPlayers().get(board.getCurrentPlayer() - 1).getName() + ", Please move to a possible position!";
 		    }
 		    
 		}
@@ -265,6 +266,99 @@ public class MoveListener implements ActionListener {
 		}
 		
 	}
+	
+	
+	//show roll dice
+	private void showRollDice() {
+		
+		btnRollDice.setEnabled(true);
+		btnRollDice.setVisible(true);
+		rollDiceLabel.setVisible(true);
+		rollDiceResult.setVisible(true);
+		rollDiceResult.setText("");
+		
+	}
+	
+
+	//update current new location
+	private void updateNewPositions() {
+		
+		int newPos_x = board.getSquareBoard().searchButtonPos_x(button.getName());
+		int newPos_y = board.getSquareBoard().searchButtonPos_y(button.getName());
+		
+		int currentPlayer = board.getCurrentPlayer();
+		
+		if(newPos_x == 6 && newPos_y == 5)
+			newPos_x -= 1;
+		if(newPos_y == 6 && newPos_x == 5)
+			newPos_y -=1;
+		
+		board.getPlayers().get(currentPlayer - 1).setPos_x(newPos_x);
+		board.getPlayers().get(currentPlayer - 1).setPos_y(newPos_y);
+		
+		
+	}
+	
+	//update text button
+	private void updateTextForButton() {
+		
+		int currentPlayer = board.getCurrentPlayer();
+		
+		String textButton = button.getText();
+		if(textButton == "RAgain" || textButton == "WEDGE" ||
+				textButton == "Trivial Purfuit" || textButton == "" ) {
+			textButton = Integer.toString(currentPlayer);
+
+		}else {
+			textButton += Integer.toString(currentPlayer);
+		}
+		
+		button.setText(textButton);
+		
+		
+	}
+	
+	//reset text for button
+	private void resetTextForButton() {
+		
+		int currentPlayer = board.getCurrentPlayer();
+		
+		int pos_x = board.getPlayers().get(currentPlayer - 1).getPos_x();
+		int pos_y =  board.getPlayers().get(currentPlayer - 1).getPos_y();
+		
+		String buttonName = board.getSquareBoard().getButtonName(pos_x, pos_y);
+		String buttonText = board.getSquareBoard().getButtonText(pos_x, pos_y);
+		
+		
+	
+		if(buttonText.equals("1")|| buttonText.equals("2")|| buttonText.equals("3") || buttonText.equals("4") ) {
+			if(buttonName == "RAgainTop1" || buttonName == "RAgainTop2" || buttonName == "RAgainLeft1" ||
+					buttonName == "RAgainLeft2" || buttonName == "RAgainRight1" || buttonName == "RAgainRight2" ||
+					buttonName == "RAgainBottom1" || buttonName == "RAgainBottom2") {
+				
+				board.getSquareBoard().setButtonText(pos_x, pos_y, "RAgain");
+				
+			}else if(buttonName == "wedgeWhite" || buttonName == "wedgeRed" || buttonName == "wedgeBlue"
+					||buttonName == "wedgeGreen") {
+				board.getSquareBoard().setButtonText(pos_x, pos_y, "WEDGE");
+				
+			}else if(buttonName == "CENTER"){
+				
+				board.getSquareBoard().setButtonText(pos_x, pos_y, "Trivial Purfuit");
+			}
+			else
+			{
+				
+				board.getSquareBoard().setButtonText(pos_x, pos_y, "");
+				
+			}
+	
+		}else {
+			buttonText = buttonText.replaceAll(Integer.toString(currentPlayer), "");
+			board.getSquareBoard().setButtonText(pos_x, pos_y, buttonText);
+		}
+	}
+	
 	
 	private JTextField textPlayer1Piece1;
 	private JTextField textPlayer1Piece2;
